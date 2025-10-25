@@ -16,14 +16,8 @@ const Foot = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Paragraph
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              Email <FaEnvelope style={{ marginLeft: 4 }} />
+            <Paragraph>
+              Email <FaEnvelope />
             </Paragraph>
           </a>
           <a
@@ -31,14 +25,8 @@ const Foot = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Paragraph
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              LinkedIn <FaLinkedin style={{ marginLeft: 4 }} />
+            <Paragraph>
+              LinkedIn <FaLinkedin />
             </Paragraph>
           </a>
           <a
@@ -46,14 +34,8 @@ const Foot = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Paragraph
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              GitHub <FaGithub style={{ marginLeft: 4 }} />
+            <Paragraph>
+              GitHub <FaGithub />
             </Paragraph>
           </a>
         </FinalRight>

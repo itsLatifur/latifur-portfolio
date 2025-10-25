@@ -5,6 +5,10 @@ import {
   ExperienceItem,
   ExperienceYears,
   ExperienceDetails,
+  MetaRow,
+  ChipsRow,
+  Chip,
+  MetaIcon,
 } from "./styles";
 
 export const Experience = ({ experiences }) => {
@@ -13,13 +17,86 @@ export const Experience = ({ experiences }) => {
       {experiences.map((exp, index) => (
         <ExperienceItem key={index}>
           <ExperienceYears>
-            <Heading3 style={{ color: "#B0B0B0", fontWeight: 300 }}>
-              {exp.years}
-            </Heading3>
+            <Heading3>{exp.years}</Heading3>
           </ExperienceYears>
           <ExperienceDetails>
-            <Heading3>{exp.title}</Heading3>
-            <Paragraph>{exp.description}</Paragraph>
+            {/**
+             * Support both new and legacy shapes:
+             * - New: { role, company, companyUrl }
+             * - Legacy: { title: "Role at Company" }
+             */}
+            {(() => {
+              const legacyTitle = exp.title || "";
+              const hasNewShape = exp.role || exp.company;
+              let role = exp.role || "";
+              let company = exp.company || "";
+              let companyUrl = exp.companyUrl || "";
+
+              if (!hasNewShape && legacyTitle) {
+                const parts = legacyTitle.split(/\s+at\s+/i);
+                if (parts.length === 2) {
+                  role = parts[0];
+                  company = parts[1];
+                } else {
+                  role = legacyTitle;
+                }
+              }
+
+              return (
+                <>
+                  {role && <Heading3 className="role">{role}</Heading3>}
+                  {company &&
+                    (companyUrl ? (
+                      <a
+                        className="company"
+                        href={companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${company} website`}
+                      >
+                        {company}
+                      </a>
+                    ) : (
+                      <span className="company">{company}</span>
+                    ))}
+
+                  {(exp.location || exp.workMode || exp.employmentType) && (
+                    <MetaRow>
+                      {exp.location && (
+                        <span className="location">
+                          <MetaIcon
+                            viewBox="0 0 16 16"
+                            focusable="false"
+                            aria-hidden="true"
+                          >
+                            <path d="M8 1a4.5 4.5 0 0 0-4.5 4.5c0 3.2 4.5 9 4.5 9s4.5-5.8 4.5-9A4.5 4.5 0 0 0 8 1zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" />
+                          </MetaIcon>
+                          {exp.location}
+                        </span>
+                      )}
+                      {(exp.workMode || exp.employmentType) && (
+                        <ChipsRow>
+                          {exp.workMode && (
+                            <Chip aria-label={`Work mode: ${exp.workMode}`}>
+                              {exp.workMode}
+                            </Chip>
+                          )}
+                          {exp.employmentType && (
+                            <Chip
+                              aria-label={`Employment type: ${exp.employmentType}`}
+                            >
+                              {exp.employmentType}
+                            </Chip>
+                          )}
+                        </ChipsRow>
+                      )}
+                    </MetaRow>
+                  )}
+                </>
+              );
+            })()}
+
+            {exp.description && <Paragraph>{exp.description}</Paragraph>}
           </ExperienceDetails>
         </ExperienceItem>
       ))}

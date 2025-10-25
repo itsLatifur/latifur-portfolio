@@ -35,10 +35,10 @@ const Card = styled(Midi)`
   padding: 0;
   padding-bottom: ${(props) => (props.noBottomPadding ? "0" : "24px")};
   &:not(:first-of-type) {
-    margin: 24px auto 0;
+    margin: 48px auto 0;
   }
   &.hero-card {
-    margin: 24px auto 0;
+    margin: 48px auto 0;
   }
 
   /* On tablet and larger, re-introduce card styles but reduce top/bottom padding */
@@ -52,10 +52,10 @@ const Card = styled(Midi)`
           : "rgba(0, 0, 0, 0.1)"};
     padding-bottom: ${(props) => (props.noBottomPadding ? "0" : "8px")};
     &:not(:first-of-type) {
-      margin: 32px auto 0;
+      margin: 48px auto 0;
     }
     &.hero-card {
-      margin: 32px auto 0;
+      margin: 48px auto 0;
     }
   }
 
@@ -68,6 +68,41 @@ const Card = styled(Midi)`
     &.hero-card {
       margin: 48px auto 0;
     }
+  }
+`;
+
+// Shared section header wrapper to unify the top spacing inside cards
+const SectionHeader = styled(LandingMidi)`
+  margin: 0 auto;
+  /* On mobile, rely on the 24px card-to-card margin; avoid extra padding above/below header */
+  padding-top: 0;
+  padding-bottom: 0;
+  @media (min-width: 768px) {
+    /* Add breathing room inside bordered cards on tablet */
+    padding-top: 24px;
+    padding-bottom: ${(p) => (p.$noBottomPad ? 0 : "24px")};
+  }
+  @media (${QUERIES.large}) {
+    /* Slightly larger on desktop */
+    padding-top: 28px;
+    padding-bottom: ${(p) => (p.$noBottomPad ? 0 : "28px")};
+  }
+  & h2 {
+    margin-top: 0; /* avoid UA margin differences */
+    margin-bottom: 0; /* normalize heading-to-content spacing (we control it outside) */
+  }
+`;
+
+// Hero inner wrapper: add consistent bottom spacing inside the hero content
+const HeroInner = styled(LandingMidi)`
+  padding-top: 0;
+  padding-bottom: 24px;
+  margin-bottom: 0;
+  @media (min-width: 768px) {
+    padding-bottom: 32px;
+  }
+  @media (${QUERIES.large}) {
+    padding-bottom: 36px;
   }
 `;
 
@@ -457,26 +492,30 @@ const Chip = styled.li`
 // with the hero card border on desktop
 const SkillsSection = styled(LandingMidi)`
   padding-top: 0;
-  padding-bottom: 0;
+  /* Add breathing room at the end of the skills area */
+  padding-bottom: 24px;
   /* Match Card vertical spacing so the gap above and below looks equal */
-  margin-top: 24px;
+  margin-top: 0; /* Mobile: hero already provides 48px bottom padding */
   margin-bottom: 0;
 
   /* Ensure the next Card (Projects) uses the same spacing below the skills */
   & + ${Card} {
-    margin-top: 24px !important;
+    /* Keep visual rhythm at 48px from the end of skills content */
+    margin-top: 24px !important; /* 48 - 24 bottom padding */
   }
 
   @media (min-width: 768px) {
-    margin-top: 32px;
+    padding-bottom: 32px;
+    margin-top: 48px;
     & + ${Card} {
-      margin-top: 32px !important;
+      margin-top: 16px !important; /* 48 - 32 */
     }
   }
   @media (${QUERIES.large}) {
     margin-top: 48px;
+    padding-bottom: 36px;
     & + ${Card} {
-      margin-top: 48px !important;
+      margin-top: 12px !important; /* 48 - 36 */
     }
   }
 `;
@@ -668,6 +707,158 @@ const PostgresIcon = (props) => (
     <path d="M9 10h6M8 13h8" />
   </svg>
 );
+
+// --- Additional icons for .NET-focused skills (currentColor, lightweight) ---
+const CSharpIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    {...props}
+  >
+    <rect
+      x="3"
+      y="5"
+      width="18"
+      height="14"
+      rx="3"
+      opacity="0.15"
+      fill="currentColor"
+    />
+    <path d="M10.5 9.5c-.9-1-2.7-1-3.6 0-.9 1-.9 3 0 4 1 1 2.7 1 3.6 0" />
+    <path d="M14 9v6M17 9v6M13.2 12h5.6" />
+  </svg>
+);
+
+const DotNetIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    {...props}
+  >
+    <circle cx="6" cy="12" r="2.3" fill="currentColor" opacity="0.2" />
+    <circle cx="12" cy="12" r="2.3" />
+    <circle cx="18" cy="12" r="2.3" fill="currentColor" opacity="0.2" />
+  </svg>
+);
+
+const AspNetIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <path d="M4 16V8l8-3 8 3v8l-8 3z" />
+    <path d="M8 13h8M10 10l4 6" />
+  </svg>
+);
+
+const EfCoreIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <ellipse cx="12" cy="7.5" rx="6" ry="2.5" />
+    <path d="M6 7.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5" />
+    <path d="M9 12h6" opacity="0.7" />
+  </svg>
+);
+
+const LinqIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <path d="M4 12h6l2 4 4-8h4" />
+    <circle cx="4" cy="12" r="1.2" fill="currentColor" />
+    <circle cx="10" cy="12" r="1.2" fill="currentColor" />
+    <circle cx="12" cy="16" r="1.2" fill="currentColor" />
+    <circle cx="16" cy="8" r="1.2" fill="currentColor" />
+  </svg>
+);
+
+const SqlServerIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5" />
+    <path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5" />
+    <path
+      d="M5.5 12v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"
+      opacity="0.6"
+    />
+  </svg>
+);
+
+const WebApiIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="3" />
+    <path d="M12 3v3M21 12h-3M12 21v-3M3 12h3M5 5l2.2 2.2M19 5l-2.2 2.2M19 19l-2.2-2.2M5 19l2.2-2.2" />
+  </svg>
+);
+
+const AzureIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <path d="M4 18 12 4l3 6-7 8z" />
+    <path d="M14 10 20 18h-9" />
+  </svg>
+);
+
+const XunitIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="8" opacity="0.2" fill="currentColor" />
+    <path d="M8 12l2.5 2.5L16 9" />
+  </svg>
+);
+
+const DockerIcon = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    {...props}
+  >
+    <rect x="5" y="10" width="3" height="3" />
+    <rect x="9" y="10" width="3" height="3" />
+    <rect x="13" y="10" width="3" height="3" />
+    <rect x="9" y="6.5" width="3" height="3" />
+    <path d="M4 15.5h15c1.5 0 2.5-1 2.5-2 0-1-1-1.8-2.3-1.9" />
+  </svg>
+);
 const SkillsHeading = styled.small`
   display: block;
   text-align: center;
@@ -751,19 +942,30 @@ const ProjectsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 24px;
+  margin-top: 24px; /* match Experience heading->content spacing */
+  padding-bottom: 24px; /* internal breathing room at bottom of projects */
   /* Ensure there's always some breathing room after the last project */
   & > *:last-child {
-    padding-bottom: 32px;
+    padding-bottom: 0; /* keep section-to-section gap consistent on mobile */
   }
 
   @media (min-width: 768px) {
     gap: 48px;
-    margin-top: 48px;
+    margin-top: 24px; /* SectionHeader tablet bottom pad is disabled for Projects */
+    padding-bottom: 32px;
     & > *:last-child {
-      padding-bottom: 40px;
+      padding-bottom: 0; /* rely on card margin/padding on larger screens too */
     }
   }
+  @media (${QUERIES.large}) {
+    margin-top: 24px; /* keep consistent with Experience */
+    padding-bottom: 36px;
+  }
+`;
+
+// Project item container: remove top padding so heading→content gap isn't inflated
+const ProjectItem = styled(LandingMidi)`
+  padding-top: 0;
 `;
 
 // Use a real <img> for the above-the-fold thumbnail so the browser can
@@ -847,9 +1049,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       <Nav mode={mode} toggleMode={toggleMode} />
       {/* --- NEW HERO STRUCTURE --- */}
       <Card mode={mode} className="hero-card" ref={heroRef}>
-        <LandingMidi
-          style={{ paddingTop: 0, paddingBottom: 0, marginBottom: 36 }}
-        >
+        <HeroInner>
           <HeroGrid>
             {/* Text Column */}
             <HeroText>
@@ -889,7 +1089,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
 
             {/* Intentionally no image in hero; About section handles profile image */}
           </HeroGrid>
-        </LandingMidi>
+        </HeroInner>
       </Card>
       {/* Mobile / Tablet skills below hero */}
       {personalData.showSkills !== false &&
@@ -917,6 +1117,23 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                   const item = typeof s === "string" ? { label: s } : s;
                   const label = item.label?.toLowerCase?.() || "";
                   const iconMap = [
+                    // Backend / .NET additions first to catch specific labels
+                    { match: "c#", Comp: CSharpIcon },
+                    { match: "csharp", Comp: CSharpIcon },
+                    { match: ".net", Comp: DotNetIcon },
+                    { match: "dotnet", Comp: DotNetIcon },
+                    { match: "asp.net", Comp: AspNetIcon },
+                    { match: "aspnet", Comp: AspNetIcon },
+                    { match: "asp.net core", Comp: AspNetIcon },
+                    { match: "entity framework", Comp: EfCoreIcon },
+                    { match: "ef core", Comp: EfCoreIcon },
+                    { match: "linq", Comp: LinqIcon },
+                    { match: "sql server", Comp: SqlServerIcon },
+                    { match: "mssql", Comp: SqlServerIcon },
+                    { match: "web api", Comp: WebApiIcon },
+                    { match: "azure", Comp: AzureIcon },
+                    { match: "xunit", Comp: XunitIcon },
+                    { match: "docker", Comp: DockerIcon },
                     { match: "react", Comp: ReactIcon },
                     { match: "javascript", Comp: JsIcon },
                     { match: "bootstrap", Comp: BootstrapIcon },
@@ -951,10 +1168,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
 
       {/* Experience Section Card */}
       {personalData.showExperiences && (
-        <Card mode={mode}>
-          <LandingMidi
-            style={{ paddingTop: 0, paddingBottom: 0, marginBottom: 0 }}
-          >
+        <Card mode={mode} noBottomPadding>
+          <SectionHeader>
             <Heading2 id="experience" tabIndex="0">
               <a
                 href="#experience"
@@ -964,7 +1179,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
               </a>
             </Heading2>
             <Experience experiences={experiencesData} />
-          </LandingMidi>
+          </SectionHeader>
         </Card>
       )}
 
@@ -974,13 +1189,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
         <Card mode={mode} noBottomPadding>
           {/* Main Title */}
           <div>
-            <LandingMidi
-              style={{
-                margin: "0 auto",
-                paddingBottom: 0,
-                paddingTop: 36,
-              }}
-            >
+            <SectionHeader $noBottomPad>
               <Heading2 id="projects" tabIndex="0">
                 <a
                   href="#projects"
@@ -989,7 +1198,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                   Projects
                 </a>
               </Heading2>
-            </LandingMidi>
+            </SectionHeader>
           </div>
 
           <ProjectsWrapper>
@@ -1035,7 +1244,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                   } catch (_) {}
                 }
                 return (
-                  <LandingMidi key={p.id} style={{ margin: "0 auto" }}>
+                  <ProjectItem key={p.id} style={{ margin: "0 auto" }}>
                     {p.video ? (
                       <ProjectVideo
                         name={p.name}
@@ -1208,7 +1417,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                         </div>
                       </>
                     )}
-                  </LandingMidi>
+                  </ProjectItem>
                 );
               })}
           </ProjectsWrapper>
@@ -1217,7 +1426,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
 
       {/* About Section Card (below Projects, above Collage) */}
       <Card mode={mode}>
-        <LandingMidi style={{ paddingTop: 0, paddingBottom: 0 }}>
+        <SectionHeader>
           <Heading2 id="about" tabIndex="0">
             <a
               href="#about"
@@ -1387,7 +1596,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
               </>
             );
           })()}
-        </LandingMidi>
+        </SectionHeader>
       </Card>
 
       {/* Collage section without a card */}
@@ -1402,7 +1611,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
           </LandingMidi>
         )}
 
-      <LandingMidi style={{ marginBottom: "10px" }}>
+      <LandingMidi style={{ marginBottom: 0, paddingBottom: 0 }}>
         <Foot />
       </LandingMidi>
     </Main>

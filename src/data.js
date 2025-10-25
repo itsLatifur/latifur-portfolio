@@ -28,7 +28,7 @@ export const personalData = {
   github: "https://github.com/itsLatifur",
   email: "itslatifur@gmail.com",
   resumeLink: "/Latifur_Rahman_Resume.pdf",
-  showExperiences: false, // can be toggled to show(true)/hide(false) experience section
+  showExperiences: true, // can be toggled to show(true)/hide(false) experience section
   showCollage: false, // toggle entire collage section on/off
   showSkills: true, // toggle skills chips section
   showCertifications: true, // toggle certifications section
@@ -42,13 +42,28 @@ export const personalData = {
   },
 
   // Skills & tooling chips (shown under the hero)
-  // Objects kept for potential future metadata (order only)
+  // Prioritized for current .NET-focused internship at Prime Tech Solutions Ltd.
+  // Keep labels short; order controls display priority
   skills: [
-    { label: "React", order: 1 },
-    { label: "JavaScript", order: 2 },
-    { label: "Bootstrap", order: 3 },
-    { label: "Tailwind CSS", order: 4 },
-    { label: "MySQL", order: 5 },
+    { label: "C#", order: 1 },
+    { label: ".NET", order: 2 },
+    // { label: "ASP.NET Core", order: 3 },
+    { label: "EF Core", order: 4 },
+    { label: "LINQ", order: 5 },
+    { label: "SQL Server", order: 6 },
+    { label: "Web API (REST)", order: 7 },
+    // { label: "Azure", order: 8 },
+    { label: "Git/GitHub", order: 9 },
+    // { label: "xUnit", order: 10 },
+    // { label: "Dependency Injection", order: 11 },
+    // { label: "Docker", order: 12 },
+
+    // Secondary/front‑end skills kept for breadth
+    { label: "JavaScript", order: 13 },
+    { label: "React", order: 14 },
+    { label: "HTML/CSS", order: 15 },
+    { label: "Bootstrap", order: 16 },
+    { label: "Tailwind CSS", order: 17 },
   ],
 
   // Certifications / Achievements (shown under About)
@@ -83,14 +98,14 @@ export const personalData = {
 
 export const experiencesData = [
   {
-    years: "2024 - now",
-    title: "Senior Product Designer at Atmosphere TV",
-    description: "Lead designer for tv for bars & restaurants",
-  },
-  {
-    years: "2023 - 2024",
-    title: "Product Designer at Atmosphere TV",
-    description: "Led design & research for customer tooling",
+    years: "Oct 2025 - present",
+    role: "Software Engineer Intern",
+    company: "Prime Tech Solutions Ltd.",
+    companyUrl: "https://primetechbd.com/", // Add official site URL to enable link on company name
+    location: "Karwanbazar, Dhaka-1215", // company location for display
+    workMode: "On-site", // On-site | Remote | Hybrid
+    employmentType: "Full-time Internship", // Full-time | Part-time | Contract | Internship
+    description: ".NET-based development.",
   },
 ];
 
