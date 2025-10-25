@@ -21,7 +21,7 @@ export const personalData = {
   location: "Dhaka, Bangladesh",
 
   showProfileImage: true, // can be toggled to show(true)/hide(false) profile image
-  profileImage: "/profile.jpg",
+  profileImage: "/profile.png",
   // Navbar logo (public path like "/my-logo.svg" or imported asset). Leave empty to use default SVG mark.
   navLogo: "/favicon.png",
   linkedIn: "https://www.linkedin.com/in/latifur/",
