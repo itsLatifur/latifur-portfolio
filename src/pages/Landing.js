@@ -368,6 +368,19 @@ const Divider = styled.hr`
   }
 `;
 
+// Mobile-only section separator used between major sections
+const SectionCut = styled(Divider)`
+  display: block;
+  margin-top: 12px;
+  /* Blend into background on mobile so it's effectively invisible */
+  background: ${({ theme }) => theme.main};
+  opacity: 1; /* ensure consistent paint without gradient banding */
+  pointer-events: none;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 const StyledButton = styled.a`
   padding: 10px 16px;
   border-radius: 8px;
@@ -1089,6 +1102,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
 
             {/* Intentionally no image in hero; About section handles profile image */}
           </HeroGrid>
+          {/* Mobile-only separator to mark end of Hero */}
+          <SectionCut />
         </HeroInner>
       </Card>
       {/* Mobile / Tablet skills below hero */}
@@ -1162,6 +1177,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                   );
                 })}
             </Skills>
+            {/* Mobile-only separator to mark end of Skills */}
+            <SectionCut />
           </SkillsSection>
         )}
       {/* --- END HERO STRUCTURE --- */}
@@ -1179,6 +1196,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
               </a>
             </Heading2>
             <Experience experiences={experiencesData} />
+            {/* Mobile-only separator to mark end of Experience */}
+            <SectionCut />
           </SectionHeader>
         </Card>
       )}
@@ -1421,6 +1440,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                 );
               })}
           </ProjectsWrapper>
+          {/* Mobile-only separator to mark end of Projects */}
+          <SectionCut />
         </Card>
       )}
 
@@ -1596,6 +1617,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
               </>
             );
           })()}
+          {/* Mobile-only separator to mark end of About */}
+          <SectionCut />
         </SectionHeader>
       </Card>
 
