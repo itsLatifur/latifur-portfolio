@@ -5,7 +5,7 @@ import MusicGif from "./images/collage/music.gif";
 import PhilosophyGif from "./images/collage/philosophy.gif";
 
 export const personalData = {
-  name: "Latifur Rahman",
+  name: "Latifur Rahman (Limon)",
   role: ["Software Engineer"],
   description:
     "I build accessible, performant web apps with React and MySQL — currently exploring Node/Express.",
