@@ -190,6 +190,9 @@ const HeroImage = styled.img`
   border: 2px solid white;
   margin: 0 auto;
   display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 
   /* Tablet */
   @media (min-width: 768px) {
@@ -1496,7 +1499,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
             {personalData.showProfileImage && (
               <AboutImage
                 src={personalData.profileImage}
-                alt={personalData.name}
+                alt={`${personalData.name} - Software Engineer, ASP.NET Core and React Developer from Bangladesh`}
+                title={`${personalData.name} - Software Engineer`}
                 loading="lazy"
                 decoding="async"
               />

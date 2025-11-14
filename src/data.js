@@ -8,10 +8,10 @@ export const personalData = {
   name: "Latifur Rahman Limon",
   role: ["Software Engineer"],
   description:
-    "I build accessible, performant web apps with React and MySQL — currently exploring Node/Express.",
+    "I build scalable web applications and REST APIs with ASP.NET Core, C#, and SQL Server.",
   // About section text (independent from hero description)
   about:
-    "I build responsive, accessible web interfaces with React and Tailwind/Bootstrap, and implement data‑backed features with MySQL. I care about performance, accessibility, and maintainable design systems. I’m also exploring Node/Express and researching low‑resource Bangla sentiment classification using BanglaBERT.",
+    "I specialize in building robust backend systems and web applications using ASP.NET Core, C#, Entity Framework Core, and SQL Server. I focus on writing clean, maintainable code with proper architecture patterns like MVC, and have experience with RESTful API development, database design, and modern .NET development practices.",
   // Education and location (used to render a meta line under About)
   education: {
     status: "Final‑year CSE student (12th semester)",

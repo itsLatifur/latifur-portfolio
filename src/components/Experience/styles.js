@@ -218,6 +218,18 @@ export const CompanyLogo = styled.img`
   padding: clamp(12px, 1.5vw, 20px);
   flex-shrink: 0;
   margin: 0;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+  pointer-events: none; /* Prevent direct image click/drag */
+  user-select: none;
+
+  a:hover &,
+  a:focus-visible & {
+    transform: scale(1.05);
+    border-color: ${({ theme }) => theme.textMain};
+  }
 
   @media (max-width: 768px) {
     width: clamp(60px, 15vw, 90px);

@@ -108,7 +108,7 @@ export const Experience = ({ experiences }) => {
                 (exp.companyUrl
                   ? `https://logo.clearbit.com/${new URL(exp.companyUrl).hostname}`
                   : null);
-              return logoSrc ? (
+              const logoElement = logoSrc ? (
                 <CompanyLogo
                   src={logoSrc}
                   alt={`${exp.company || "Company"} logo`}
@@ -117,6 +117,21 @@ export const Experience = ({ experiences }) => {
                   }}
                 />
               ) : null;
+
+              // Wrap logo in link if companyUrl exists
+              return logoElement && exp.companyUrl ? (
+                <a
+                  href={exp.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${exp.company || "company"} website`}
+                  style={{ lineHeight: 0 }}
+                >
+                  {logoElement}
+                </a>
+              ) : (
+                logoElement
+              );
             })()}
           </ExperienceContent>
         </ExperienceItem>
