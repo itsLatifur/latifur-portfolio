@@ -19,6 +19,14 @@ export const ExperienceItem = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.outline};
   }
 
+  /* Desktop: 3-column grid with even spacing */
+  @media (min-width: 769px) {
+    display: grid;
+    grid-template-columns: 180px 1fr 160px;
+    gap: 48px;
+    align-items: start;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 10px;
@@ -46,6 +54,11 @@ export const ExperienceContent = styled.div`
   gap: 2%;
   align-items: flex-start;
   justify-content: space-between;
+
+  /* Desktop: remove flex container since parent uses grid */
+  @media (min-width: 769px) {
+    display: contents;
+  }
 
   @media (max-width: 768px) {
     flex-direction: row-reverse;

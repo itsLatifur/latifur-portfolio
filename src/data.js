@@ -8,7 +8,7 @@ export const personalData = {
   // Basic personal info
   name: "Latifur Rahman Limon",
   role: ["Software Engineer"],
-  oneLiner: "I build scalable web applications using .NET. Currently interning at Prime Tech Solutions Ltd.",
+  oneLiner: "Currently building a scalable school management system using .NET",
   // About section text
   about:
     "I specialize in building robust backend systems and web applications using ASP.NET Core, C#, Entity Framework Core, and SQL Server. I focus on writing clean, maintainable code with proper architecture patterns like MVC, and have experience with RESTful API development, database design, and modern .NET development practices.",
