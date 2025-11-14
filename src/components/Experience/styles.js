@@ -211,10 +211,9 @@ export const MetaIcon = styled.svg`
 export const LogoWrapper = styled.div`
   width: clamp(100px, 12vw, 160px);
   height: clamp(100px, 12vw, 160px);
-  border-radius: 16px;
+  border-radius: 12px;
   background: ${({ theme }) => theme.main};
   border: 1px solid ${({ theme }) => theme.outline};
-  padding: clamp(12px, 1.5vw, 20px);
   flex-shrink: 0;
   margin: 0;
   cursor: pointer;
@@ -225,6 +224,7 @@ export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0; /* Remove padding so border-radius clips properly */
 
   a:hover &,
   a:focus-visible & {
@@ -235,15 +235,19 @@ export const LogoWrapper = styled.div`
   @media (max-width: 768px) {
     width: clamp(60px, 15vw, 90px);
     height: clamp(60px, 15vw, 90px);
-    padding: clamp(8px, 1.2vw, 12px);
-    border-radius: 12px;
+    border-radius: 8px;
   }
 `;
 
 export const CompanyLogo = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 85%; /* Slightly smaller than container for padding effect */
+  height: 85%;
   object-fit: contain;
   pointer-events: none;
   user-select: none;
+  border-radius: 6px; /* Proportionally matches wrapper's 12px */
+
+  @media (max-width: 768px) {
+    border-radius: 4px; /* Proportionally matches wrapper's 8px */
+  }
 `;
