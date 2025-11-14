@@ -1018,7 +1018,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       const prevTitle = document.title;
       const meta = document.querySelector('meta[name="description"]');
       const prevDesc = meta ? meta.getAttribute("content") : undefined;
-      document.title = "Projects — Latifur Rahman";
+      document.title = "Projects — Latifur Rahman Limon";
       const projectsDesc =
         "Selected projects by Latifur Rahman: Content Variety & Scheduling, Redesigning B2B Signup, and more.";
       if (meta) meta.setAttribute("content", projectsDesc);
