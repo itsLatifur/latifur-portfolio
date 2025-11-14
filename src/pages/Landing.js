@@ -1008,13 +1008,11 @@ const DockerIcon = (props) => (
     <path d="M4 15.5h15c1.5 0 2.5-1 2.5-2 0-1-1-1.8-2.3-1.9" />
   </svg>
 );
-const SkillsHeading = styled.small`
+const SkillsHeading = styled(Heading2)`
   display: block;
   text-align: center;
-  margin-bottom: 8px;
+  margin: 0 0 16px 0;
   color: ${({ theme }) => theme.textMain};
-  opacity: 0.85;
-  letter-spacing: 0.2px;
 `;
 
 const CertGrid = styled.div`
