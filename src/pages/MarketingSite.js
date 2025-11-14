@@ -15,13 +15,11 @@ import styled, { createGlobalStyle } from "styled-components";
 import { Nav, Foot } from "../components";
 import { Spread } from "../components/switch/styles";
 import {
-  finalFigma,
   marketingInspo,
   marketingSketch,
   newFlow,
   NewVid,
   oldFlow,
-  productPageVid,
   scheduleDemo,
   signUp,
 } from "../images";
@@ -469,13 +467,10 @@ const MarketingSite = ({ toggleMode, mode, spread }) => {
           }}
         >
           <video playsInline autoPlay muted loop style={{ borderRadius: 10 }}>
-            <source src={productPageVid}></source>
+            <source src={NewVid}></source>
           </video>
 
-          <Caption>
-            Final product page design, including product images, reviews, and
-            necessary details
-          </Caption>
+          <Caption>Final shipped designs for the marketing site</Caption>
         </div>
         <div
           style={{
@@ -692,31 +687,6 @@ const MarketingSite = ({ toggleMode, mode, spread }) => {
           </ul>
         </DarkerParagraph>
       </Midi>
-
-      <Full>
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <ImageGrow
-            onClick={() => {
-              window.open(
-                "/static/media/final-figma.f4aef92b311e5b2010bd.png",
-                "_blank",
-                "noopener,noreferrer",
-              );
-            }}
-            src={finalFigma}
-            style={{ width: "100%" }}
-            alt="Final figma file for marketing site work"
-          />
-
-          <Caption>Final figma file for marketing site work</Caption>
-        </div>
-      </Full>
 
       <Midi
         style={{

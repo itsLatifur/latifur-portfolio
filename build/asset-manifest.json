@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.js": "/static/js/main.e461adef.js",
+    "main.js": "/static/js/main.1e5871d5.js",
     "static/js/488.cd7cecd1.chunk.js": "/static/js/488.cd7cecd1.chunk.js",
-    "static/media/product-page.mp4": "/static/media/product-page.bb09b84022e70ca691be.mp4",
     "static/media/newvid.mp4": "/static/media/newvid.3bc75a0f17d1e079c15f.mp4",
     "static/media/vuln-hifi.png": "/static/media/vuln-hifi.6edc88265ed47dc214f7.png",
     "static/media/hifi.png": "/static/media/hifi.b00034246371a721232c.png",
@@ -25,7 +24,6 @@
     "static/media/persona-2.png": "/static/media/persona-2.29ed00164c9285af6a7b.png",
     "static/media/sketch4.png": "/static/media/sketch4.6963b63499e64afbdb15.png",
     "static/media/newflow.png": "/static/media/newflow.9e4afdadac03884cbc5b.png",
-    "static/media/layout8.png": "/static/media/layout8.c71d069fefaa6ee78d7b.png",
     "static/media/final2.png": "/static/media/final2.7b9d49dcdb8ae031f623.png",
     "static/media/sketch3.png": "/static/media/sketch3.4b872d0284a8bdb38dd3.png",
     "static/media/log4j-2.png": "/static/media/log4j-2.2fad7003a7d06ddfddbd.png",
@@ -42,7 +40,6 @@
     "static/media/interview.png": "/static/media/interview.75230e9e3206ad5b00b2.png",
     "static/media/log4j-1.png": "/static/media/log4j-1.4c51dfcdd660ab184a38.png",
     "static/media/persona-1.png": "/static/media/persona-1.651773a087f59d3ef0ef.png",
-    "static/media/final-figma.png": "/static/media/final-figma.905426fcfc8c50455410.png",
     "static/media/marketing-finished.png": "/static/media/marketing-finished.905426fcfc8c50455410.png",
     "static/media/sketch1.png": "/static/media/sketch1.8e26f14c4a1736ffd22b.png",
     "static/media/onboarding.png": "/static/media/onboarding.89baa661d88195faa82f.png",
@@ -83,10 +80,10 @@
     "static/media/send.svg": "/static/media/send.7cae41a6384dc44f26ca25c0a971d9dd.svg",
     "static/media/external.svg": "/static/media/external.7fc2a1398f05a9f19d6e4e284e72dea8.svg",
     "static/media/code.svg": "/static/media/code.2ce0f85ccd6f23660b55e0ae3671d0bc.svg",
-    "main.e461adef.js.map": "/static/js/main.e461adef.js.map",
+    "main.1e5871d5.js.map": "/static/js/main.1e5871d5.js.map",
     "488.cd7cecd1.chunk.js.map": "/static/js/488.cd7cecd1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.e461adef.js"
+    "static/js/main.1e5871d5.js"
   ]
 }

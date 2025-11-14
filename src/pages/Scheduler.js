@@ -26,11 +26,10 @@ import {
   Layout5,
   Layout6,
   Layout7,
-  Dragging,
-  UserFlow,
-  Layout8,
   Layout9,
   Sketches,
+  Dragging,
+  UserFlow,
 } from "../images";
 import Outline from "../components/Outline";
 
@@ -940,7 +939,7 @@ const Scheduler = ({ toggleMode, mode, spread, setDisableScroll }) => {
                 "noopener,noreferrer",
               );
             }}
-            src={Layout8}
+            src={Layout9}
             style={{ width: "100%" }}
             alt="Default channel drastically reduced the amount of time required to create a schedule."
           />

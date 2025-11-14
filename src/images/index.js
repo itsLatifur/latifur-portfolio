@@ -33,7 +33,6 @@ import Layout4 from "./schedule/layout4.png";
 import Layout5 from "./schedule/layout5.png";
 import Layout6 from "./schedule/layout6.png";
 import Layout7 from "./schedule/layout7.png";
-import Layout8 from "./schedule/layout8.png";
 import Layout9 from "./schedule/layout9.png";
 import Thumb from "./schedule/thumb.png";
 import NewVid from "./newvid.mp4";
@@ -57,10 +56,8 @@ import {
   marketingSketch,
   oldFlow,
   newFlow,
-  finalFigma,
   scheduleDemo,
   signUp,
-  productPageVid,
 } from "./marketing-site";
 
 import {
@@ -142,7 +139,6 @@ export {
   Layout5,
   Layout6,
   Layout7,
-  Layout8,
   Layout9,
   Thumb,
   Dragging,
@@ -152,11 +148,9 @@ export {
   marketingInspo,
   marketingSketch,
   newFlow,
-  finalFigma,
   oldFlow,
   scheduleDemo,
   signUp,
-  productPageVid,
   CodeIcon,
   ExternalIcon,
 };
