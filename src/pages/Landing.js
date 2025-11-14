@@ -274,7 +274,6 @@ const HeroName = styled(Heading)`
   }
 
   @media (${QUERIES.large}) {
-    text-align: left;
     margin-bottom: 12px;
   }
 `;
@@ -289,7 +288,6 @@ const RoleLine = styled(Heading2)`
   color: ${({ theme }) => theme.grayText};
 
   @media (${QUERIES.large}) {
-    text-align: left;
     margin-bottom: 28px;
   }
 `;
@@ -337,8 +335,6 @@ const HeroText = styled.div`
   @media (${QUERIES.large}) {
     grid-row: 1;
     grid-column: 1 / 2;
-    align-items: flex-start;
-    text-align: left;
   }
 `;
 
@@ -346,6 +342,8 @@ const HeroText = styled.div`
 const AboutText = styled(HeroText)`
   /* Mobile/Tablet: show text below image */
   grid-row: 2;
+  text-align: left;
+  align-items: flex-start;
 
   @media (${QUERIES.large}) {
     /* Desktop: text left as before */
@@ -407,10 +405,12 @@ const ActionsRow = styled.div`
   gap: 8px;
   margin-top: 10px;
   flex-wrap: wrap;
-  justify-content: center;
-
-  @media (${QUERIES.large}) {
-    justify-content: flex-start;
+  width: 100%;
+  
+  a {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
   }
 `;
 
@@ -476,9 +476,12 @@ const ButtonGroup = styled.div`
   margin: 0;
   flex-wrap: wrap;
   justify-content: center;
-
-  @media (${QUERIES.large}) {
-    justify-content: flex-start;
+  width: 100%;
+  
+  a {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
   }
 `;
 
