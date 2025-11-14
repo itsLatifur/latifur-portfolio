@@ -1239,7 +1239,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
           onClick={() => {
             navigate("/");
             setTimeout(() => {
-              const el = document.getElementById("projects");
+              const el = document.getElementById("experience");
               if (el) {
                 const yOffset = -100;
                 const y =

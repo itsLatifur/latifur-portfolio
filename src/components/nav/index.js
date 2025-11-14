@@ -43,12 +43,11 @@ const Nav = ({ toggleMode, mode, spread }) => {
           <button
             onClick={() => {
               if (!isHome) {
-                navigate("/projects");
+                navigate("/#experience");
               } else {
-                scrollTo("projects");
+                scrollTo("experience");
               }
             }}
-            className={!isHome ? "active" : ""}
           >
             Work
           </button>

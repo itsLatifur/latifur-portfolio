@@ -247,6 +247,12 @@ export const LogoWrapper = styled.div`
     height: clamp(60px, 15vw, 90px);
     border-radius: 8px;
   }
+
+  @media (max-width: 330px) {
+    width: clamp(50px, 13vw, 70px);
+    height: clamp(50px, 13vw, 70px);
+    border-radius: 6px;
+  }
 `;
 
 export const CompanyLogo = styled.img`
