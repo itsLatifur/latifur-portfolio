@@ -101,11 +101,12 @@ export const experiencesData = [
     years: "Oct 2025 - present",
     role: "Software Engineer Intern",
     company: "Prime Tech Solutions Ltd.",
-    companyUrl: "https://primetechbd.com/", // Add official site URL to enable link on company name
-    location: "T.K. Bhaban, Kawran Bazar, Dhaka", // company location for display
-    workMode: "On-site", // On-site | Remote | Hybrid
-    employmentType: "Internship", // Full-time | Part-time | Contract | Internship
+    companyUrl: "https://primetechbd.com/",
+    location: "T.K. Bhaban, Kawran Bazar, Dhaka",
+    workMode: "On-site",
+    employmentType: "Internship",
     description: ".NET-based development.",
+    logo: "/primetech.jpg", // add custom logo path if not auto-fetched
   },
 ];
 

@@ -9,6 +9,8 @@ import {
   ChipsRow,
   Chip,
   MetaIcon,
+  CompanyLogo,
+  ExperienceContent,
 } from "./styles";
 
 export const Experience = ({ experiences }) => {
@@ -19,48 +21,49 @@ export const Experience = ({ experiences }) => {
           <ExperienceYears>
             <Heading3>{exp.years}</Heading3>
           </ExperienceYears>
-          <ExperienceDetails>
-            {/**
-             * Support both new and legacy shapes:
-             * - New: { role, company, companyUrl }
-             * - Legacy: { title: "Role at Company" }
-             */}
-            {(() => {
-              const legacyTitle = exp.title || "";
-              const hasNewShape = exp.role || exp.company;
-              let role = exp.role || "";
-              let company = exp.company || "";
-              let companyUrl = exp.companyUrl || "";
+          <ExperienceContent>
+            <ExperienceDetails>
+              {/**
+               * Support both new and legacy shapes:
+               * - New: { role, company, companyUrl }
+               * - Legacy: { title: "Role at Company" }
+               */}
+              {(() => {
+                const legacyTitle = exp.title || "";
+                const hasNewShape = exp.role || exp.company;
+                let role = exp.role || "";
+                let company = exp.company || "";
+                let companyUrl = exp.companyUrl || "";
 
-              if (!hasNewShape && legacyTitle) {
-                const parts = legacyTitle.split(/\s+at\s+/i);
-                if (parts.length === 2) {
-                  role = parts[0];
-                  company = parts[1];
-                } else {
-                  role = legacyTitle;
+                if (!hasNewShape && legacyTitle) {
+                  const parts = legacyTitle.split(/\s+at\s+/i);
+                  if (parts.length === 2) {
+                    role = parts[0];
+                    company = parts[1];
+                  } else {
+                    role = legacyTitle;
+                  }
                 }
-              }
 
-              return (
-                <>
-                  {role && <Heading3 className="role">{role}</Heading3>}
-                  {company &&
-                    (companyUrl ? (
-                      <a
-                        className="company"
-                        href={companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${company} website`}
-                      >
-                        {company}
-                      </a>
-                    ) : (
-                      <span className="company">{company}</span>
-                    ))}
+                return (
+                  <>
+                    {role && <Heading3 className="role">{role}</Heading3>}
+                    {company &&
+                      (companyUrl ? (
+                        <a
+                          className="company"
+                          href={companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${company} website`}
+                        >
+                          {company}
+                        </a>
+                      ) : (
+                        <span className="company">{company}</span>
+                      ))}
 
-                  {(exp.location || exp.workMode || exp.employmentType) && (
+                    {/* Location and chips stacked vertically */}
                     <MetaRow>
                       {exp.location && (
                         <span className="location">
@@ -91,13 +94,31 @@ export const Experience = ({ experiences }) => {
                         </ChipsRow>
                       )}
                     </MetaRow>
-                  )}
-                </>
-              );
-            })()}
+                  </>
+                );
+              })()}
 
-            {exp.description && <Paragraph>{exp.description}</Paragraph>}
-          </ExperienceDetails>
+              {exp.description && <Paragraph>{exp.description}</Paragraph>}
+            </ExperienceDetails>
+
+            {/* Company Logo */}
+            {(() => {
+              const logoSrc =
+                exp.logo ||
+                (exp.companyUrl
+                  ? `https://logo.clearbit.com/${new URL(exp.companyUrl).hostname}`
+                  : null);
+              return logoSrc ? (
+                <CompanyLogo
+                  src={logoSrc}
+                  alt={`${exp.company || "Company"} logo`}
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                  }}
+                />
+              ) : null;
+            })()}
+          </ExperienceContent>
         </ExperienceItem>
       ))}
     </ExperienceList>

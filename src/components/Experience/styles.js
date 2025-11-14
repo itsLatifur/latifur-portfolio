@@ -40,6 +40,19 @@ export const ExperienceItem = styled.div`
   }
 `;
 
+export const ExperienceContent = styled.div`
+  flex: 1;
+  display: flex;
+  gap: 2%;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: row-reverse;
+    gap: 3%;
+  }
+`;
+
 export const ExperienceYears = styled.div`
   min-width: 180px;
   text-align: left;
@@ -126,8 +139,8 @@ export const ExperienceDetails = styled.div`
 
 export const MetaRow = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
   margin: 2px 0 8px 0;
 
@@ -138,29 +151,23 @@ export const MetaRow = styled.div`
     font-size: 13.5px;
     line-height: 22px;
     color: ${({ theme }) => theme.grayText};
-    margin-right: 4px;
     white-space: normal;
     overflow-wrap: anywhere;
   }
   @media (max-width: 480px) {
     gap: 6px;
-    flex-direction: column; /* stack location and chips */
-    align-items: flex-start;
     span.location {
-      display: inline-flex; /* keep icon and text aligned */
       font-size: 13px;
       line-height: 20px;
-      margin-bottom: 2px;
     }
   }
 `;
 
 export const ChipsRow = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 8px;
   @media (max-width: 480px) {
-    display: flex; /* ensure it breaks onto its own line below location */
     gap: 6px;
   }
 `;
@@ -198,5 +205,23 @@ export const MetaIcon = styled.svg`
   @media (max-width: 480px) {
     width: 12px;
     height: 12px;
+  }
+`;
+
+export const CompanyLogo = styled.img`
+  width: clamp(100px, 12vw, 160px);
+  height: clamp(100px, 12vw, 160px);
+  object-fit: contain;
+  border-radius: 12px;
+  background: ${({ theme }) => theme.main};
+  border: 1px solid ${({ theme }) => theme.outline};
+  padding: clamp(12px, 1.5vw, 20px);
+  flex-shrink: 0;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    width: clamp(60px, 15vw, 90px);
+    height: clamp(60px, 15vw, 90px);
+    padding: clamp(8px, 1.2vw, 12px);
   }
 `;
