@@ -5,10 +5,11 @@ import MusicGif from "./images/collage/music.gif";
 import PhilosophyGif from "./images/collage/philosophy.gif";
 
 export const personalData = {
+  // Basic personal info
   name: "Latifur Rahman Limon",
   role: ["Software Engineer"],
-  description: "I build scalable web applications with ASP.NET",
-  // About section text (independent from hero description)
+  oneLiner: "I build scalable web applications using .NET. Currently interning at Prime Tech Solutions Ltd.",
+  // About section text
   about:
     "I specialize in building robust backend systems and web applications using ASP.NET Core, C#, Entity Framework Core, and SQL Server. I focus on writing clean, maintainable code with proper architecture patterns like MVC, and have experience with RESTful API development, database design, and modern .NET development practices.",
   // Education and location (used to render a meta line under About)

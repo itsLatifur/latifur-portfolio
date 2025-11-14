@@ -1286,7 +1286,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                 <RoleLine>{personalData.role.join(" · ")}</RoleLine>
               )}
               <Paragraph style={{ margin: "0 0 24px 0" }}>
-                {personalData.description}
+                {personalData.oneLiner}
               </Paragraph>
               {/* Skills are rendered below the hero across all breakpoints */}
               <Divider />
@@ -1677,7 +1677,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
             {/* Text column mimics previous hero text styling */}
             <AboutText>
               <AboutParagraph>
-                {personalData.about ?? personalData.description}
+                {personalData.about ?? personalData.oneLiner}
               </AboutParagraph>
               {(personalData.education || personalData.location) && (
                 <AboutMeta>
