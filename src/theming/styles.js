@@ -139,6 +139,10 @@ export const Full = styled.main`
   padding: 20px;
   max-width: 1100px;
 
+  @media (min-width: 768px) {
+    max-width: 1210px;
+  }
+
   @media (${QUERIES.large}) {
     margin: 64px auto 64px auto;
     padding: 0px;
@@ -151,6 +155,10 @@ export const Midi = styled.div`
   margin: 20px auto 20px auto;
   padding: 20px;
   max-width: 750px;
+
+  @media (min-width: 768px) {
+    max-width: 825px;
+  }
 
   @media (${QUERIES.large}) {
     margin: 44px auto 60px auto;
@@ -165,6 +173,10 @@ export const LandingMidi = styled.div`
   padding: 20px;
   max-width: 750px;
 
+  @media (min-width: 768px) {
+    max-width: 825px;
+  }
+
   @media (${QUERIES.large}) {
     margin: 44px auto 100px auto;
     padding: 0px;
@@ -172,7 +184,7 @@ export const LandingMidi = styled.div`
 `;
 
 export const Inner = styled.div`
-  max-width: 1437px;
+  max-width: 1581px;
   width: 100%;
   height: auto;
   margin: 0 auto;

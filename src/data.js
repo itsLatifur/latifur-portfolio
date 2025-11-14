@@ -7,8 +7,7 @@ import PhilosophyGif from "./images/collage/philosophy.gif";
 export const personalData = {
   name: "Latifur Rahman Limon",
   role: ["Software Engineer"],
-  description:
-    "I build scalable web applications with ASP.NET",
+  description: "I build scalable web applications with ASP.NET",
   // About section text (independent from hero description)
   about:
     "I specialize in building robust backend systems and web applications using ASP.NET Core, C#, Entity Framework Core, and SQL Server. I focus on writing clean, maintainable code with proper architecture patterns like MVC, and have experience with RESTful API development, database design, and modern .NET development practices.",
@@ -103,6 +102,7 @@ export const experiencesData = [
     company: "Prime Tech Solutions Ltd.",
     companyUrl: "https://primetechbd.com/",
     location: "T.K. Bhaban, Kawran Bazar",
+    locationMapUrl: "https://maps.app.goo.gl/d1QCx5UNbAnQNa4S6",
     workMode: "On-site",
     employmentType: "Internship",
     description: ".NET-based development.",

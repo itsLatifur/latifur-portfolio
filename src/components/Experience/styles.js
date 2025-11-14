@@ -154,7 +154,8 @@ export const MetaRow = styled.div`
   gap: 8px;
   margin: 2px 0 8px 0;
 
-  span.location {
+  span.location,
+  a.location {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -163,10 +164,21 @@ export const MetaRow = styled.div`
     color: ${({ theme }) => theme.grayText};
     white-space: normal;
     overflow-wrap: anywhere;
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
+
+  a.location:hover,
+  a.location:focus-visible {
+    color: ${({ theme }) => theme.textMain};
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   @media (max-width: 480px) {
     gap: 6px;
-    span.location {
+    span.location,
+    a.location {
       font-size: 13px;
       line-height: 20px;
     }

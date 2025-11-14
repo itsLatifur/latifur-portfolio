@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components';
+import { keyframes } from "styled-components";
 
 export const fadeIn = keyframes`
   from {
@@ -43,6 +43,19 @@ export const scaleUp = keyframes`
     }
 `;
 
+export const pulseGlow = keyframes`
+    0%, 100% { 
+        box-shadow: 
+            0 0 0 1px rgba(128, 128, 128, 0.2) inset,
+            0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    50% { 
+        box-shadow: 
+            0 0 0 1px rgba(128, 128, 128, 0.5) inset,
+            0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+`;
+
 export const scaleUpAlt = keyframes`
     0%{ 
         transform: scale(1) translateY(190px);
@@ -67,7 +80,6 @@ export const scaleDown = keyframes`
         transform: scale(1);
     }
 `;
-
 
 export const SpreadBlackAnim = keyframes`
 0%{

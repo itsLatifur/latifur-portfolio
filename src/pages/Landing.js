@@ -29,6 +29,7 @@ import {
 import { ProjectSlider } from "../components/Project/projectSlider";
 import { Spread } from "../components/switch/styles";
 import projects from "../data/projects";
+import { pulseGlow } from "../theming/animate";
 
 const Card = styled(Midi)`
   /* On mobile, cards have no special styling */
@@ -612,18 +613,19 @@ const Chip = styled.li`
     ),
     ${({ theme }) => theme.textMain}0F;
   backdrop-filter: saturate(140%) blur(2px);
-  box-shadow:
-    0 0 0 1px ${({ theme }) => theme.outline}33 inset,
-    0 2px 8px ${({ theme }) => theme.main}14;
+  animation: ${pulseGlow} 2s ease-in-out infinite;
   transition:
     transform 160ms ease,
-    box-shadow 160ms ease,
-    background-color 160ms ease;
+    background-color 160ms ease,
+    border-color 160ms ease;
+  cursor: default;
 
   &:hover {
     transform: translateY(-1px);
+    border-color: ${({ theme }) => theme.textMain}AA;
+    animation: none;
     box-shadow:
-      0 0 0 1px ${({ theme }) => theme.outline}33 inset,
+      0 0 0 1px ${({ theme }) => theme.textMain}66 inset,
       0 6px 14px ${({ theme }) => theme.main}22;
   }
   &:focus-visible {

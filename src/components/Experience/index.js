@@ -66,18 +66,36 @@ export const Experience = ({ experiences }) => {
 
                     {/* Location and chips stacked vertically */}
                     <MetaRow>
-                      {exp.location && (
-                        <span className="location">
-                          <MetaIcon
-                            viewBox="0 0 16 16"
-                            focusable="false"
-                            aria-hidden="true"
+                      {exp.location &&
+                        (exp.locationMapUrl ? (
+                          <a
+                            className="location"
+                            href={exp.locationMapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${exp.location} on map`}
                           >
-                            <path d="M8 1a4.5 4.5 0 0 0-4.5 4.5c0 3.2 4.5 9 4.5 9s4.5-5.8 4.5-9A4.5 4.5 0 0 0 8 1zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" />
-                          </MetaIcon>
-                          {exp.location}
-                        </span>
-                      )}
+                            <MetaIcon
+                              viewBox="0 0 16 16"
+                              focusable="false"
+                              aria-hidden="true"
+                            >
+                              <path d="M8 1a4.5 4.5 0 0 0-4.5 4.5c0 3.2 4.5 9 4.5 9s4.5-5.8 4.5-9A4.5 4.5 0 0 0 8 1zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" />
+                            </MetaIcon>
+                            {exp.location}
+                          </a>
+                        ) : (
+                          <span className="location">
+                            <MetaIcon
+                              viewBox="0 0 16 16"
+                              focusable="false"
+                              aria-hidden="true"
+                            >
+                              <path d="M8 1a4.5 4.5 0 0 0-4.5 4.5c0 3.2 4.5 9 4.5 9s4.5-5.8 4.5-9A4.5 4.5 0 0 0 8 1zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z" />
+                            </MetaIcon>
+                            {exp.location}
+                          </span>
+                        ))}
                       {(exp.workMode || exp.employmentType) && (
                         <ChipsRow>
                           {exp.workMode && (
