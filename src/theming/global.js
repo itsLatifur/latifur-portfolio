@@ -17,6 +17,17 @@ const GlobalStyles = createGlobalStyle`
     font-display: swap;
     src: url('/fonts/inter/InterVariable-Italic.woff2') format('woff2');
   }
+
+  /* Skeleton shimmer animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
     * {
     border: 0;
     box-sizing: border-box;

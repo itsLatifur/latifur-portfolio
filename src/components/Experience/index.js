@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heading3, Paragraph } from "../../theming/styles";
 import {
   ExperienceList,
@@ -127,17 +127,45 @@ export const Experience = ({ experiences }) => {
                 (exp.companyUrl
                   ? `https://logo.clearbit.com/${new URL(exp.companyUrl).hostname}`
                   : null);
-              const logoElement = logoSrc ? (
-                <LogoWrapper>
-                  <CompanyLogo
-                    src={logoSrc}
-                    alt={`${exp.company || "Company"} logo`}
-                    onError={(e) => {
-                      e.target.parentElement.style.display = "none";
-                    }}
-                  />
-                </LogoWrapper>
-              ) : null;
+              const LogoWithLoading = () => {
+                const [loaded, setLoaded] = useState(false);
+                const [error, setError] = useState(false);
+
+                if (error) return null;
+
+                return (
+                  <LogoWrapper>
+                    {!loaded && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          background: `linear-gradient(90deg, rgba(128,128,128,0.1) 0%, rgba(128,128,128,0.2) 50%, rgba(128,128,128,0.1) 100%)`,
+                          backgroundSize: "200% 100%",
+                          animation: "shimmer 1.5s infinite",
+                          borderRadius: "inherit",
+                        }}
+                      />
+                    )}
+                    <CompanyLogo
+                      src={logoSrc}
+                      alt={`${exp.company || "Company"} logo`}
+                      style={{
+                        opacity: loaded ? 1 : 0,
+                        transition: "opacity 0.3s",
+                      }}
+                      onLoad={() => setLoaded(true)}
+                      onError={(e) => {
+                        setError(true);
+                        e.target.parentElement.parentElement.style.display =
+                          "none";
+                      }}
+                    />
+                  </LogoWrapper>
+                );
+              };
+
+              const logoElement = logoSrc ? <LogoWithLoading /> : null;
 
               // Wrap logo in link if companyUrl exists
               return logoElement && exp.companyUrl ? (
