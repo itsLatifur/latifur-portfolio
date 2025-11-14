@@ -406,7 +406,7 @@ const ActionsRow = styled.div`
   margin-top: 10px;
   flex-wrap: wrap;
   width: 100%;
-  
+
   a {
     flex: 1;
     min-width: 120px;
@@ -477,7 +477,7 @@ const ButtonGroup = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  
+
   a {
     flex: 1;
     min-width: 140px;
