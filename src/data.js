@@ -38,7 +38,7 @@ export const personalData = {
 
   // Analytics configuration (set your GA4 ID here to enable analytics)
   analytics: {
-    gaMeasurementId: "", // e.g., "G-XXXXXXX"; leave empty to disable
+    gaMeasurementId: "G-Z060NRM34Q", // Google Analytics Measurement ID
   },
 
   // Skills & tooling chips (shown under the hero)

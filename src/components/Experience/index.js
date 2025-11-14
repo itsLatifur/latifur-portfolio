@@ -10,6 +10,7 @@ import {
   Chip,
   MetaIcon,
   CompanyLogo,
+  LogoWrapper,
   ExperienceContent,
 } from "./styles";
 
@@ -109,13 +110,15 @@ export const Experience = ({ experiences }) => {
                   ? `https://logo.clearbit.com/${new URL(exp.companyUrl).hostname}`
                   : null);
               const logoElement = logoSrc ? (
-                <CompanyLogo
-                  src={logoSrc}
-                  alt={`${exp.company || "Company"} logo`}
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                  }}
-                />
+                <LogoWrapper>
+                  <CompanyLogo
+                    src={logoSrc}
+                    alt={`${exp.company || "Company"} logo`}
+                    onError={(e) => {
+                      e.target.parentElement.style.display = "none";
+                    }}
+                  />
+                </LogoWrapper>
               ) : null;
 
               // Wrap logo in link if companyUrl exists

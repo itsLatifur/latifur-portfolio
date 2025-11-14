@@ -208,11 +208,10 @@ export const MetaIcon = styled.svg`
   }
 `;
 
-export const CompanyLogo = styled.img`
+export const LogoWrapper = styled.div`
   width: clamp(100px, 12vw, 160px);
   height: clamp(100px, 12vw, 160px);
-  object-fit: contain;
-  border-radius: 12px;
+  border-radius: 16px;
   background: ${({ theme }) => theme.main};
   border: 1px solid ${({ theme }) => theme.outline};
   padding: clamp(12px, 1.5vw, 20px);
@@ -222,8 +221,10 @@ export const CompanyLogo = styled.img`
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;
-  pointer-events: none; /* Prevent direct image click/drag */
-  user-select: none;
+  overflow: hidden; /* Clips the image to border-radius */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   a:hover &,
   a:focus-visible & {
@@ -235,5 +236,14 @@ export const CompanyLogo = styled.img`
     width: clamp(60px, 15vw, 90px);
     height: clamp(60px, 15vw, 90px);
     padding: clamp(8px, 1.2vw, 12px);
+    border-radius: 12px;
   }
+`;
+
+export const CompanyLogo = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
 `;

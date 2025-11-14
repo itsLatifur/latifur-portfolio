@@ -1,0 +1,17 @@
+/* TEAM */
+Developer: Latifur Rahman Limon
+Site: https://www.latifur.dev
+LinkedIn: https://www.linkedin.com/in/latifur/
+GitHub: https://github.com/itsLatifur
+Location: Dhaka, Bangladesh
+
+/* SITE */
+Last update: 2025/11/14
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code
+Technologies: React, ASP.NET Core, C#, SQL Server
+
+/* THANKS */
+Design: Julia Codes (https://www.juliacodes.com)
+Customized by: Latifur Rahman
