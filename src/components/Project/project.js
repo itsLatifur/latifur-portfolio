@@ -7,7 +7,7 @@ const ImageProj = styled.div`
   margin-bottom: 18px;
   width: 100%;
   height: 290px;
-  border-radius: 25px;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
   @media (${QUERIES.small}) {

@@ -1,6 +1,18 @@
 import styled from "styled-components";
-import QUERIES from "../../theming/styles";
+import QUERIES, { Midi } from "../../theming/styles";
 import { fadeIn } from "../../theming/animate";
+
+export const NavWrapper = styled(Midi)`
+  margin: 2px auto 20px auto !important;
+
+  @media (min-width: 768px) {
+    margin: 10px auto 20px auto !important;
+  }
+
+  @media (${QUERIES.large}) {
+    margin: 22px auto 60px auto !important;
+  }
+`;
 
 export const NavCont = styled.nav`
   width: auto;

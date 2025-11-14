@@ -5,7 +5,7 @@ const Frame = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 25px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 18px;
   background: ${({ theme }) => theme.outline}22;

@@ -83,6 +83,16 @@ export const ExperienceDetails = styled.div`
   flex: 1;
 
   /* Ensure consistent typography with the rest of the site */
+  h3.role {
+    font-size: clamp(18px, 4vw, 20px);
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   h3 {
     font-size: 20px; /* aligns with Heading3 default */
     line-height: 28px;

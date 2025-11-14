@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { NavCont, NavLinks } from "./styles";
-import { Midi } from "../../theming/styles";
+import { NavCont, NavLinks, NavWrapper } from "./styles";
 import { Logo } from "../logo";
 import { Switch } from "../switch";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -27,7 +26,7 @@ const Nav = ({ toggleMode, mode, spread }) => {
   }, [location]);
 
   return (
-    <Midi style={{ mixBlendMode: "difference" }}>
+    <NavWrapper style={{ mixBlendMode: "difference" }}>
       <NavCont>
         <Link
           to="/"
@@ -69,7 +68,7 @@ const Nav = ({ toggleMode, mode, spread }) => {
 
         <Switch spread={spread} mode={mode} toggleMode={toggleMode} />
       </NavCont>
-    </Midi>
+    </NavWrapper>
   );
 };
 

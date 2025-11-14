@@ -12,7 +12,7 @@ const ImageProj = styled.video`
   margin-bottom: 18px;
   width: 100%;
   height: auto;
-  border-radius: 25px;
+  border-radius: 12px;
   overflow: hidden;
 `;
 

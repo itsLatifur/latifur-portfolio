@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import QUERIES, {
   Main,
   Midi,
@@ -95,14 +95,15 @@ const SectionHeader = styled(LandingMidi)`
 
 // Hero inner wrapper: add consistent bottom spacing inside the hero content
 const HeroInner = styled(LandingMidi)`
-  padding-top: 0;
-  padding-bottom: 24px;
-  margin-bottom: 0;
+  padding: 0 16px 24px 16px !important;
+  margin: 0 !important;
+
   @media (min-width: 768px) {
-    padding-bottom: 32px;
+    padding: 24px 0 32px 0 !important;
   }
+
   @media (${QUERIES.large}) {
-    padding-bottom: 36px;
+    padding: 32px 0 36px 0 !important;
   }
 `;
 
@@ -125,8 +126,10 @@ const StickyNameBar = styled.div`
 
 const StickyNameInner = styled(LandingMidi)`
   margin: 0 auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const StickyName = styled.div`
@@ -135,6 +138,94 @@ const StickyName = styled.div`
   line-height: 1.4;
   font-weight: 500;
   color: ${({ theme }) => theme.textMain};
+`;
+
+const MenuButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.outline};
+  border-radius: 8px;
+  color: ${({ theme }) => theme.textMain};
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.outline}22;
+    border-color: ${({ theme }) => theme.textMain};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.textMain};
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (${QUERIES.large}) {
+    display: none;
+  }
+`;
+
+const MobileMenu = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6000;
+  background: ${({ theme }) => theme.main}F5;
+  backdrop-filter: blur(10px);
+  opacity: ${(p) => (p.$shown ? 1 : 0)};
+  pointer-events: ${(p) => (p.$shown ? "auto" : "none")};
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px;
+
+  @media (${QUERIES.large}) {
+    display: none;
+  }
+`;
+
+const MobileMenuLink = styled.button`
+  all: unset;
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.textMain};
+  cursor: pointer;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.outline}22;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.textMain};
+    outline-offset: 2px;
+  }
+`;
+
+const CloseButton = styled(MenuButton)`
+  position: absolute;
+  top: 20px;
+  right: 20px;
 `;
 
 const HeroGrid = styled.div`
@@ -166,19 +257,41 @@ const AboutGrid = styled(HeroGrid)`
 // Correct Divider, ButtonGroup, Chip will appear below (Divider previously corrupted HeroGrid)
 
 const HeroName = styled(Heading)`
-  font-weight: 500;
-  margin: 0 0 16px 0;
+  font-weight: 600;
+  margin: 0 0 10px 0;
   padding: 0;
-  line-height: 1.05;
-  font-size: clamp(32px, 5vw, 40px);
+  line-height: 1.1;
+  font-size: clamp(22px, 9vw, 48px);
+  white-space: nowrap;
+  text-align: center;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+
+  @media (min-width: 360px) {
+    font-size: clamp(28px, 9vw, 48px);
+  }
+
+  @media (${QUERIES.large}) {
+    text-align: left;
+    margin-bottom: 12px;
+  }
 `;
 
 const RoleLine = styled(Heading2)`
-  font-size: 18px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: 400;
-  margin: -4px 0 0 0;
-  opacity: 0.9;
-  line-height: 1.3;
+  margin: 0 0 24px 0;
+  opacity: 0.85;
+  line-height: 1.4;
+  text-align: center;
+  color: ${({ theme }) => theme.grayText};
+
+  @media (${QUERIES.large}) {
+    text-align: left;
+    margin-bottom: 28px;
+  }
 `;
 
 const HeroImage = styled.img`
@@ -212,10 +325,20 @@ const HeroText = styled.div`
   grid-row: 1;
   display: flex;
   flex-direction: column;
-  /* Match other sections: no internal width constraint or auto-centering */
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  /* Reset any paragraph margins for even spacing */
+  p {
+    margin: 0;
+  }
+
   @media (${QUERIES.large}) {
     grid-row: 1;
     grid-column: 1 / 2;
+    align-items: flex-start;
+    text-align: left;
   }
 `;
 
@@ -284,6 +407,11 @@ const ActionsRow = styled.div`
   gap: 8px;
   margin-top: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+
+  @media (${QUERIES.large}) {
+    justify-content: flex-start;
+  }
 `;
 
 const ActionButton = styled.a`
@@ -345,10 +473,12 @@ const ExternalIcon = styled(ExternalIconSvg)`
 const ButtonGroup = styled.div`
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin: 0;
   flex-wrap: wrap;
-  @media (max-width: 767px) {
-    justify-content: center;
+  justify-content: center;
+
+  @media (${QUERIES.large}) {
+    justify-content: flex-start;
   }
 `;
 
@@ -356,7 +486,7 @@ const Divider = styled.hr`
   width: 100%;
   border: 0;
   height: 1px;
-  margin: 18px 0 0 0;
+  margin: 0 0 20px 0;
   position: relative;
   background: linear-gradient(
     90deg,
@@ -367,7 +497,7 @@ const Divider = styled.hr`
     transparent 100%
   );
   @media (max-width: 767px) {
-    margin-top: 16px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -1002,8 +1132,10 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
     spread === "first" ? "growBlack" : spread === "second" ? "growWhite" : "";
 
   const location = useLocation();
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const [showStickyName, setShowStickyName] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   useEffect(() => {
     const isProjectsRoute = location.pathname === "/projects";
     const isProjectsHash =
@@ -1059,8 +1191,85 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       <StickyNameBar $shown={showStickyName}>
         <StickyNameInner>
           <StickyName>{personalData.name}</StickyName>
+          <MenuButton
+            onClick={() => setShowMobileMenu(true)}
+            aria-label="Open menu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </MenuButton>
         </StickyNameInner>
       </StickyNameBar>
+
+      <MobileMenu $shown={showMobileMenu}>
+        <CloseButton
+          onClick={() => setShowMobileMenu(false)}
+          aria-label="Close menu"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </CloseButton>
+
+        <MobileMenuLink
+          onClick={() => {
+            navigate("/");
+            setShowMobileMenu(false);
+          }}
+        >
+          Home
+        </MobileMenuLink>
+
+        <MobileMenuLink
+          onClick={() => {
+            navigate("/");
+            setTimeout(() => {
+              const el = document.getElementById("projects");
+              if (el) {
+                const yOffset = -100;
+                const y =
+                  el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: "smooth" });
+              }
+            }, 100);
+            setShowMobileMenu(false);
+          }}
+        >
+          Work
+        </MobileMenuLink>
+
+        <MobileMenuLink
+          onClick={() => {
+            navigate("/");
+            setTimeout(() => {
+              const el = document.getElementById("about");
+              if (el) {
+                const yOffset = -100;
+                const y =
+                  el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: "smooth" });
+              }
+            }, 100);
+            setShowMobileMenu(false);
+          }}
+        >
+          About
+        </MobileMenuLink>
+      </MobileMenu>
       <Spread className={spreadClass} />
       <Nav mode={mode} toggleMode={toggleMode} />
       {/* --- NEW HERO STRUCTURE --- */}
@@ -1073,7 +1282,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
               {personalData.role?.length > 0 && (
                 <RoleLine>{personalData.role.join(" · ")}</RoleLine>
               )}
-              <Paragraph style={{ marginTop: "24px" }}>
+              <Paragraph style={{ margin: "0 0 24px 0" }}>
                 {personalData.description}
               </Paragraph>
               {/* Skills are rendered below the hero across all breakpoints */}
