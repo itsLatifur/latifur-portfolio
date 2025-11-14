@@ -1143,6 +1143,9 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
     const isProjectsRoute = location.pathname === "/projects";
     const isProjectsHash =
       location.pathname === "/" && location.hash === "#projects";
+    const isExperienceHash =
+      location.pathname === "/" && location.hash === "#experience";
+
     if (isProjectsRoute || isProjectsHash) {
       // Smooth scroll to projects section after mount
       const el = document.getElementById("projects");
@@ -1160,6 +1163,31 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       const projectsDesc =
         "Selected projects by Latifur Rahman: Content Variety & Scheduling, Redesigning B2B Signup, and more.";
       if (meta) meta.setAttribute("content", projectsDesc);
+
+      return () => {
+        document.title = prevTitle;
+        if (meta && typeof prevDesc === "string")
+          meta.setAttribute("content", prevDesc);
+      };
+    }
+
+    if (isExperienceHash) {
+      // Smooth scroll to experience section
+      const el = document.getElementById("experience");
+      if (el) {
+        const yOffset = -100;
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+
+      // Update document title and meta description for experience/work view
+      const prevTitle = document.title;
+      const meta = document.querySelector('meta[name="description"]');
+      const prevDesc = meta ? meta.getAttribute("content") : undefined;
+      document.title = "Work Experience — Latifur Rahman Limon";
+      const experienceDesc =
+        "Professional experience of Latifur Rahman Limon: Software Engineer Intern at Prime Tech Solutions Ltd., .NET-based development.";
+      if (meta) meta.setAttribute("content", experienceDesc);
 
       return () => {
         document.title = prevTitle;

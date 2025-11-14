@@ -13,9 +13,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "node scripts/update-sitemap.js",
     "build": "react-scripts build",
+    "postbuild": "node scripts/postbuild.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "update-sitemap": "node scripts/update-sitemap.js"
   },
   "eslintConfig": {
     "extends": [
