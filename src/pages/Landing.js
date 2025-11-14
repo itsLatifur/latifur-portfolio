@@ -16,16 +16,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as CodeIconSvg } from "../images/code.svg";
 import { ReactComponent as ExternalIconSvg } from "../images/external.svg";
-import { personalData, experiencesData, collageItems } from "../data";
+import { personalData, experiencesData } from "../data";
 import { CodeIcon as CodeSvg, ExternalIcon as ExternalSvg } from "../images";
-import {
-  Nav,
-  Foot,
-  Project,
-  ProjectVideo,
-  Collage,
-  Experience,
-} from "../components";
+import { Nav, Foot, Project, ProjectVideo, Experience } from "../components";
 import { ProjectSlider } from "../components/Project/projectSlider";
 import { Spread } from "../components/switch/styles";
 import projects from "../data/projects";
@@ -1865,18 +1858,6 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
           <SectionCut />
         </SectionHeader>
       </Card>
-
-      {/* Collage section without a card */}
-      {personalData.showCollage !== false &&
-        collageItems.filter?.((i) => i?.visible !== false).length > 0 && (
-          <LandingMidi
-            style={{
-              paddingTop: 20,
-            }}
-          >
-            <Collage />
-          </LandingMidi>
-        )}
 
       <LandingMidi style={{ marginBottom: 0, paddingBottom: 0 }}>
         <Foot />

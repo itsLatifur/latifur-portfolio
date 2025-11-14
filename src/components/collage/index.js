@@ -1,31 +1,12 @@
 import React from "react";
 import { CollageCont, CollageItem } from "./styles";
-import CollageImage1 from "../../images/collage/collage1.png";
-import CollageGif2 from "../../images/collage/collage2.gif";
-import CollageImage3 from "../../images/collage/collage3.png";
-import CollageGif4 from "../../images/collage/collage4.gif";
-import CollageGif5 from "../../images/collage/collage5.gif";
-import { collageItems } from "../../data";
 
 const Collage = () => {
-  // Sensible defaults using existing assets; will be overridden by data.js if provided
-  const defaultItems = [
-    { label: "Content Scheduling", img: CollageImage1, alt: "Scheduler" },
-    { label: "Trivia Game Design", img: CollageGif2, alt: "Trivia Game" },
-    { label: "Email Onboarding", img: CollageImage3, alt: "Email Onboarding" },
-    { label: "Paywall Popup", img: CollageGif4, alt: "Paywall Popup" },
-    {
-      label: "Navigation Collapse",
-      img: CollageGif5,
-      alt: "Navigation Collapse",
-    },
-  ];
+  // Collage is disabled, return empty array
+  const defaultItems = [];
 
-  // Use user-provided items if present; each item can have: { label, href?, src?, alt?, visible? }
-  const items =
-    Array.isArray(collageItems) && collageItems.length > 0
-      ? collageItems.filter((i) => i?.visible !== false)
-      : defaultItems;
+  // Use default items since collage is disabled
+  const items = defaultItems;
 
   return (
     <CollageCont>

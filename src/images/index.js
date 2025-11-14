@@ -25,7 +25,7 @@ import Interview from "./schedule/interview.png";
 import ContentVariety from "./schedule/content.png";
 import Affinity from "./schedule/affinity.png";
 import PrototypeMess from "./schedule/prototype-mess.png";
-import Prototype from "./schedule/prototype.gif";
+import Prototype from "./schedule/prototype-mess.png";
 import Layout1 from "./schedule/layout1.png";
 import Layout2 from "./schedule/layout2.png";
 import Layout3 from "./schedule/layout3.png";
@@ -38,7 +38,7 @@ import Layout9 from "./schedule/layout9.png";
 import Thumb from "./schedule/thumb.png";
 import NewVid from "./newvid.mp4";
 import Sketches from "./schedule/sketches.jpg";
-import Dragging from "./schedule/dragging.gif";
+import Dragging from "./schedule/layout4.png";
 import UserFlow from "./schedule/useflow.png";
 import {
   Log4j1,
