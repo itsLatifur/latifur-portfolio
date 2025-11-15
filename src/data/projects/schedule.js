@@ -1,4 +1,4 @@
-export default {
+const schedule = {
   id: "schedule",
   name: "Content Variety & Scheduling",
   description: "Led research & design to solve content staleness problems",
@@ -8,3 +8,5 @@ export default {
   visibleOnHome: false,
   poster: require("../../images/schedule/thumb.png"),
 };
+
+export default schedule;

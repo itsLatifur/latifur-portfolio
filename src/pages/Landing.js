@@ -1734,7 +1734,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                 src={personalData.profileImage}
                 alt={`${personalData.name} - Software Engineer, ASP.NET Core and React Developer from Bangladesh`}
                 title={`${personalData.name} - Software Engineer`}
-                loading="lazy"
+                loading="eager"
+                fetchpriority="high"
                 decoding="async"
               />
             )}

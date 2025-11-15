@@ -59,7 +59,9 @@ const FlexGroup = styled.div`
   }
 `;
 
-const ImageGrow = styled.img`
+const ImageGrow = styled.img.attrs((props) => ({
+  loading: props.loading || "lazy",
+}))`
   :hover {
     cursor: zoom-in;
   }
@@ -337,11 +339,7 @@ const Scheduler = ({ toggleMode, mode, spread, setDisableScroll }) => {
         >
           <ImageGrow
             onClick={() => {
-              window.open(
-                "/static/media/prototype.88c74f995e128cf0323b.gif",
-                "_blank",
-                "noopener,noreferrer",
-              );
+              window.open(Prototype, "_blank", "noopener,noreferrer");
             }}
             src={Prototype}
             style={{ width: "100%", borderRadius: 24 }}
@@ -713,11 +711,7 @@ const Scheduler = ({ toggleMode, mode, spread, setDisableScroll }) => {
         >
           <ImageGrow
             onClick={() => {
-              window.open(
-                "/static/media/dragging.2176544bcd67a7d0dffa.gif",
-                "_blank",
-                "noopener,noreferrer",
-              );
+              window.open(Dragging, "_blank", "noopener,noreferrer");
             }}
             src={Dragging}
             style={{ width: "100%" }}

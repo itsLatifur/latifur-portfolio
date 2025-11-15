@@ -1,4 +1,4 @@
-export default {
+const marketingSite = {
   id: "marketing-site",
   name: "Redesigning B2B Signup",
   description: "Reimagining the signup flow for Atmosphere TV",
@@ -10,3 +10,5 @@ export default {
   poster: require("../../images/marketing-site/signUp.png"),
   autoplay: true,
 };
+
+export default marketingSite;

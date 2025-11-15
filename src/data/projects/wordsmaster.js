@@ -1,4 +1,4 @@
-export default {
+const wordsmaster = {
   id: "wordsmaster",
   name: "WordsMaster: Guess the Word",
   description:
@@ -18,3 +18,5 @@ export default {
   // and set the public path below to switch without code changes.
   posterPublic: "",
 };
+
+export default wordsmaster;

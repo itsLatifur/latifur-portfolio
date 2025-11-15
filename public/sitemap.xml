@@ -5,7 +5,7 @@
   <!-- Main Portfolio Page -->
   <url>
     <loc>https://www.latifur.dev/</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -18,13 +18,13 @@
   <!-- Resume/CV Pages -->
   <url>
     <loc>https://www.latifur.dev/resume.html</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/CV.html</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -32,49 +32,49 @@
   <!-- Project Pages -->
   <url>
     <loc>https://www.latifur.dev/wordsmaster</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/khorochnama</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/schedule</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/marketing-site</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/movie</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/vuln</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/devops</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.latifur.dev/ea1</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -82,31 +82,31 @@
   <!-- Additional Content Subdomains -->
   <url>
     <loc>https://blogs.latifur.dev/</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://poetry.latifur.dev/</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gallery.latifur.dev/</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://music.latifur.dev/</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://philosophy.latifur.dev/</loc>
-    <lastmod>2025-11-14</lastmod>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

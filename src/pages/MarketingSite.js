@@ -50,7 +50,9 @@ const FlexGroup = styled.div`
   }
 `;
 
-const ImageGrow = styled.img`
+const ImageGrow = styled.img.attrs((props) => ({
+  loading: props.loading || "lazy",
+}))`
   :hover {
     cursor: zoom-in;
   }

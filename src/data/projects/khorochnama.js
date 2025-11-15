@@ -1,4 +1,4 @@
-export default {
+const khorochnama = {
   id: "khorochnama",
   name: "Khorochnama: Expense Tracker",
   description:
@@ -14,3 +14,5 @@ export default {
   poster: require("../../images/schedule/thumb.png"),
   // Later you can set: posterPublic: "/images/khorochnama/thumb.png",
 };
+
+export default khorochnama;
