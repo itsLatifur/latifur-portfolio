@@ -1732,11 +1732,14 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
             {personalData.showProfileImage && (
               <AboutImage
                 src={personalData.profileImage}
-                alt={`${personalData.name} - Software Engineer, ASP.NET Core and React Developer from Bangladesh`}
-                title={`${personalData.name} - Software Engineer`}
+                alt="Latifur Rahman Limon - Software Engineer, ASP.NET Core Developer, .NET Developer, React Developer, Full Stack Developer, Bangladesh, Dhaka, IUBAT, Prime Tech Solutions Ltd., C#, Entity Framework, SQL Server, REST API, portfolio, web developer, full stack developer, frontend developer, backend developer, Data Scientist, Latifur Rahman Limon profile photo, Latifur Rahman Limon portrait, Latifur Rahman Limon image, Latifur Rahman Limon picture, Latifur Rahman Limon software engineer photo, Latifur Rahman Limon .NET developer photo, Latifur Rahman Limon Bangladesh developer photo, Latifur Rahman Limon Dhaka software engineer photo, Latifur Rahman Limon IUBAT, Latifur Rahman Limon Prime Tech Solutions Ltd."
+                title="Latifur Rahman Limon - Software Engineer, ASP.NET Core Developer,Bangladesh, Dhaka, IUBAT, Prime Tech Solutions Ltd., .NET Developer, React Developer, Full Stack Developer"
+                itemProp="image"
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
+                width="300"
+                height="300"
               />
             )}
           </AboutGrid>
