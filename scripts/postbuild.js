@@ -1,13 +1,27 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-// Copy sitemap from public to build directory after build
-const publicSitemapPath = path.join(__dirname, '../public/sitemap.xml');
-const buildSitemapPath = path.join(__dirname, '../build/sitemap.xml');
+// Copy sitemap files from public to build directory after build
+const publicSitemapPath = path.join(__dirname, "../public/sitemap.xml");
+const buildSitemapPath = path.join(__dirname, "../build/sitemap.xml");
 
-if (fs.existsSync(publicSitemapPath) && fs.existsSync(path.dirname(buildSitemapPath))) {
-  fs.copyFileSync(publicSitemapPath, buildSitemapPath);
-  console.log('✓ Sitemap copied to build directory');
-} else {
-  console.log('⚠ Build directory not found or sitemap missing');
+const publicImageSitemapPath = path.join(
+  __dirname,
+  "../public/image-sitemap.xml",
+);
+const buildImageSitemapPath = path.join(
+  __dirname,
+  "../build/image-sitemap.xml",
+);
+
+function copyIfExists(src, dest, label) {
+  if (fs.existsSync(src) && fs.existsSync(path.dirname(dest))) {
+    fs.copyFileSync(src, dest);
+    console.log(`✓ ${label} copied to build directory`);
+  } else {
+    console.log(`⚠ ${label} missing or build directory not found`);
+  }
 }
+
+copyIfExists(publicSitemapPath, buildSitemapPath, "Sitemap");
+copyIfExists(publicImageSitemapPath, buildImageSitemapPath, "Image sitemap");
