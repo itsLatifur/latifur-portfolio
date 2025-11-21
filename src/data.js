@@ -2,7 +2,48 @@ export const personalData = {
   // Basic personal info
   name: "Latifur Rahman Limon",
   role: ["Software Engineer"],
-  oneLiner: "Currently building a scalable school management system using .NET",
+  oneLiner: "Building Nilamee (auction marketplace) using .NET",
+  // Product or project name to highlight on small screens (editable)
+  projectName: "Nilamee",
+
+  // Structured one-liner variants (editable) used by the hero rotator.
+  // Editable prefix used by the hero and meta injection. Change this to update the "Currently building" text site-wide.
+  oneLinerPrefix: "Building",
+  // Each item can be a simple string or an object with parts to highlight.
+  // Shape: { before, highlightA, middle, highlightB }
+  oneLinerVariants: [
+    {
+      before: "",
+      highlightA: "Nilamee",
+      middle: "(auction marketplace) using",
+      highlightB: "ASP.NET",
+    },
+    {
+      before: "",
+      highlightA: "Nilamee",
+      middle: "(auction marketplace) using",
+      highlightB: "EF Core",
+    },
+    {
+      before: "",
+      highlightA: "Nilamee",
+      middle: "(auction marketplace) using",
+      highlightB: "MVC Pattern",
+    },
+    // ,
+    // {
+    //   before: "the",
+    //   highlightA: "auction marketplace backend",
+    //   middle: "with",
+    //   highlightB: "ASP.NET & EF Core",
+    // },
+    // {
+    //   before: "high-performance",
+    //   highlightA: ".NET Web APIs",
+    //   middle: "for",
+    //   highlightB: "auctions",
+    // },
+  ],
   // About section text
   about:
     "I specialize in building robust backend systems and web applications using ASP.NET Core, C#, Entity Framework Core, and SQL Server. I focus on writing clean, maintainable code with proper architecture patterns like MVC, and have experience with RESTful API development, database design, and modern .NET development practices.",

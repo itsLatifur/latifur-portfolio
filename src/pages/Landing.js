@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import OneLiner from "../components/OneLiner";
 import { useLocation, useNavigate } from "react-router-dom";
 import QUERIES, {
   Main,
@@ -23,6 +24,115 @@ import { ProjectSlider } from "../components/Project/projectSlider";
 import { Spread } from "../components/switch/styles";
 import projects from "../data/projects";
 import { pulseGlow } from "../theming/animate";
+
+// Hover card for education preview
+const HoverPreview = styled.div`
+  position: fixed;
+  right: 88px; /* nudge left slightly from the page edge (moved 12px) */
+  top: 50%;
+  transform: translateY(-50%) translateX(12px) scale(0.98); /* start slightly offset */
+  z-index: 2000;
+  background: ${({ theme }) =>
+    theme.previewBg ||
+    (theme.main === "#FFFFFF" ? "#fff" : theme.altWhite || "#111")};
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  width: 340px;
+  height: 620px;
+  max-height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.18s,
+    transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  /* Only show on desktop */
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: translateY(-50%);
+  }
+
+  /* Small pointer/arrow pointing left towards the link */
+  &::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 12px solid
+      ${({ theme }) =>
+        theme.previewBg ||
+        (theme.main === "#FFFFFF"
+          ? "#fff"
+          : theme.altWhite || "#111")}; /* matches preview background */
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 1024px) {
+    &::before {
+      display: none;
+    }
+  }
+`;
+
+const HoverWrapper = styled.span`
+  position: relative;
+  display: inline-block;
+  a {
+    transition:
+      box-shadow 180ms ease,
+      text-decoration-color 180ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a {
+      transition: none;
+    }
+  }
+
+  &:hover ${HoverPreview}, &:focus-within ${HoverPreview} {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  &:hover a,
+  &:focus-within a {
+    text-decoration: underline;
+    box-shadow: 0 0 0 6px rgba(120, 160, 255, 0.06) inset;
+  }
+`;
+
+// Small header inside the preview to indicate source
+const PreviewHeader = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  .pill {
+    background: ${({ theme }) =>
+      theme.previewPillBg || "rgba(255,255,255,0.96)"};
+    color: ${({ theme }) => theme.previewPillText || "#222"};
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  }
+`;
 
 const Card = styled(Midi)`
   /* On mobile, cards have no special styling */
@@ -288,8 +398,9 @@ const RoleLine = styled(Heading2)`
 
 const HeroImage = styled.img`
   width: 100%;
-  max-width: 200px; /* smaller on mobile */
-  aspect-ratio: 1 / 1;
+  max-width: 260px; /* ensure mobile does not shrink too small */
+  aspect-ratio: 1 / 1 !important; /* enforce square ratio */
+  height: auto !important; /* prevent external rules from forcing height */
   object-fit: cover;
   border-radius: 8px;
   border: 2px solid white;
@@ -339,6 +450,10 @@ const AboutText = styled(HeroText)`
   text-align: left;
   align-items: flex-start;
 
+  /* About text should follow theme colors instead of hero blend styles */
+  color: ${({ theme }) => theme.textMain};
+  mix-blend-mode: normal;
+
   @media (${QUERIES.large}) {
     /* Desktop: text left as before */
     grid-row: 1;
@@ -370,9 +485,11 @@ const AboutParagraph = styled(Paragraph)`
   }
 `;
 
-const AboutMeta = styled.div`
-  margin-top: 8px;
-  font-size: 13px;
+const AboutMetaInline = styled.span`
+  display: inline;
+  margin-left: 0; /* no extra gap; rely on a single space in JSX */
+  font-size: 15px;
+  line-height: 1.65;
   opacity: 0.85;
   color: ${({ theme }) => theme.textMain};
   a {
@@ -380,12 +497,8 @@ const AboutMeta = styled.div`
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  /* Space between lines */
-  & > * + * {
-    margin-top: 4px;
-  }
   @media (min-width: 768px) {
-    font-size: 13.5px;
+    font-size: 16px;
   }
 `;
 
@@ -1205,6 +1318,84 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
     return () => obs.disconnect();
   }, []);
 
+  // Update meta tags and JSON-LD with the current one-liner so crawlers that
+  // execute JS (like Google) will see the live "Currently building ..." sentence.
+  useEffect(() => {
+    const prefix = personalData.oneLinerPrefix || null;
+    const variants = personalData.oneLinerVariants || [];
+    const variantToText = (v) => {
+      if (!v) return "";
+      if (typeof v === "string") return v;
+      const parts = [];
+      if (v.before) parts.push(v.before);
+      if (v.highlightA) parts.push(v.highlightA);
+      if (v.middle) parts.push(v.middle);
+      if (v.highlightB) parts.push(v.highlightB);
+      return parts.join(" ");
+    };
+
+    let desc = "";
+    if (personalData.oneLiner && personalData.oneLiner.trim()) {
+      desc = personalData.oneLiner;
+    } else if (prefix && variants.length > 0) {
+      desc = `${prefix} ${variantToText(variants[0])}`.trim();
+    } else if (prefix) {
+      desc = prefix;
+    } else {
+      desc = personalData.oneLiner || "";
+    }
+
+    const updateMeta = (attrName, attrValue, content) => {
+      try {
+        const sel = `meta[${attrName}="${attrValue}"]`;
+        const el = document.head.querySelector(sel);
+        if (el) {
+          el.setAttribute("content", content);
+        } else {
+          const m = document.createElement("meta");
+          m.setAttribute(attrName, attrValue);
+          m.setAttribute("content", content);
+          document.head.appendChild(m);
+        }
+      } catch (e) {
+        // defensive - ignore in environments without document
+      }
+    };
+
+    updateMeta("name", "description", desc);
+    updateMeta("property", "og:description", desc);
+    updateMeta("name", "twitter:description", desc);
+
+    // JSON-LD for WebPage (keeps it lightweight). Replace or create a single
+    // script tag with id so updates overwrite it on subsequent changes.
+    try {
+      const ld = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url: window.location.origin + "/",
+        name: document.title || "Latifur Rahman - Portfolio",
+        description: desc,
+      };
+
+      let script = document.getElementById("one-liner-jsonld");
+      if (script) {
+        script.textContent = JSON.stringify(ld);
+      } else {
+        script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.id = "one-liner-jsonld";
+        script.textContent = JSON.stringify(ld);
+        document.head.appendChild(script);
+      }
+    } catch (e) {
+      // ignore when document isn't present
+    }
+  }, [
+    personalData.oneLiner,
+    personalData.oneLinerPrefix,
+    personalData.oneLinerVariants,
+  ]);
+
   return (
     <Main
       style={{
@@ -1307,7 +1498,14 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                 <RoleLine>{personalData.role.join(" · ")}</RoleLine>
               )}
               <Paragraph style={{ margin: "0 0 24px 0" }}>
-                {personalData.oneLiner}
+                <OneLiner
+                  phrases={
+                    personalData.oneLinerVariants || [personalData.oneLiner]
+                  }
+                  prefix={personalData.oneLinerPrefix || "Currently building"}
+                  fallback={personalData.oneLiner}
+                  projectName={personalData.projectName}
+                />
               </Paragraph>
               {/* Skills are rendered below the hero across all breakpoints */}
               <Divider />
@@ -1477,18 +1675,6 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                   try {
                     const ctx = require.context(
                       "../images/wordsmaster",
-                      false,
-                      /\.(png|jpe?g|gif|webp)$/i,
-                    );
-                    sliderImages = ctx
-                      .keys()
-                      .sort()
-                      .map((k) => ctx(k));
-                  } catch (_) {}
-                } else if (p.id === "khorochnama") {
-                  try {
-                    const ctx = require.context(
-                      "../images/khorochnama",
                       false,
                       /\.(png|jpe?g|gif|webp)$/i,
                     );
@@ -1698,34 +1884,81 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
             {/* Text column mimics previous hero text styling */}
             <AboutText>
               <AboutParagraph>
-                {personalData.about ?? personalData.oneLiner}
+                {personalData.about ?? personalData.oneLiner}{" "}
+                {(personalData.education || personalData.location) && (
+                  <AboutMetaInline>
+                    {"I'm a "}
+                    {personalData.education && (
+                      <>
+                        {personalData.education.status}
+                        {personalData.education.institution &&
+                        personalData.education.url ? (
+                          <>
+                            {" "}
+                            at{" "}
+                            <HoverWrapper>
+                              <a
+                                href={personalData.education.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                tabIndex={0}
+                                aria-controls="preview-iubat"
+                              >
+                                {personalData.education.institution}
+                              </a>
+                              <HoverPreview
+                                aria-label="Website preview"
+                                id="preview-iubat"
+                              >
+                                <PreviewHeader>
+                                  {personalData.education &&
+                                  personalData.education.url ? (
+                                    <img
+                                      src={`https://www.google.com/s2/favicons?domain=${new URL(personalData.education.url).hostname}`}
+                                      alt=""
+                                      style={{
+                                        width: 18,
+                                        height: 18,
+                                        marginRight: 8,
+                                        borderRadius: 4,
+                                      }}
+                                    />
+                                  ) : null}
+                                  <span className="pill">
+                                    Preview —{" "}
+                                    {personalData.education.institution}
+                                  </span>
+                                </PreviewHeader>
+                                <iframe
+                                  src={personalData.education.url}
+                                  title={
+                                    personalData.education.institution +
+                                    " website preview"
+                                  }
+                                  style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    border: 0,
+                                  }}
+                                  loading="lazy"
+                                  tabIndex={-1}
+                                />
+                              </HoverPreview>
+                            </HoverWrapper>
+                          </>
+                        ) : null}
+                      </>
+                    )}
+                    {personalData.location && (
+                      <>
+                        {personalData.education ? "," : ""} based in{" "}
+                        {personalData.location}
+                      </>
+                    )}
+                    .
+                  </AboutMetaInline>
+                )}
               </AboutParagraph>
-              {(personalData.education || personalData.location) && (
-                <AboutMeta>
-                  {personalData.education && (
-                    <div>
-                      {personalData.education.status}{" "}
-                      {personalData.education.institution &&
-                      personalData.education.url ? (
-                        <>
-                          at{" "}
-                          <a
-                            href={personalData.education.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {personalData.education.institution}
-                          </a>
-                          .
-                        </>
-                      ) : null}
-                    </div>
-                  )}
-                  {personalData.location && (
-                    <div>Based in {personalData.location}.</div>
-                  )}
-                </AboutMeta>
-              )}
             </AboutText>
 
             {/* Image column appears only when flag is on */}

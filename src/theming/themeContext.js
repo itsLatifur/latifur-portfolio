@@ -4,6 +4,10 @@ const lightTheme = {
   inverse: "#1A181F",
   alt: "#F4F4F4",
   altWhite: "#FFFFFF",
+  // Preview / floating card colors
+  previewBg: "#FFFFFF",
+  previewPillBg: "#F7F9FB",
+  previewPillText: "#0F1720",
   textMain: "#000000",
   cover: "rgba(169, 169, 169, 0.69)",
   formGray: "#F8F8F8",
@@ -21,6 +25,10 @@ export const darkTheme = {
   inverse: "#FFFFFF",
   alt: "#201E26",
   altWhite: "#201E26",
+  // Preview / floating card colors
+  previewBg: "#201E26",
+  previewPillBg: "#2B2931",
+  previewPillText: "#FFFFFF",
   textMain: "#FFFFFF",
   grayText: "#ACACAC",
   formGray: "#3E3D43",
