@@ -1,4 +1,4 @@
-### Latifur Rahman — Portfolio
+### Latifur Rahman - Portfolio
 
 Made by <a href="https://www.juliacodes.com">Julia</a>
 and <a href="https://www.latifur.dev">Latifur</a>.
@@ -21,7 +21,7 @@ and <a href="https://www.latifur.dev">Latifur</a>.
 - SEO meta, OpenGraph, Twitter cards in `public/index.html`
 - JSON-LD structured data included
 - Robots and sitemap present in `/public`
-- Google Analytics gtag included — replace the ID with your own in `public/index.html`
+- Google Analytics gtag included - replace the ID with your own in `public/index.html`
 
 ## Tailwind setup
 

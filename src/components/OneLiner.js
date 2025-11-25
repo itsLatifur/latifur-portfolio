@@ -14,7 +14,7 @@ const Phrase = styled.span`
 const Highlight = styled.span`
   color: ${({ theme }) => theme.previewPillText || theme.textMain};
   font-weight: 700;
-  /* no underline or glow — keep emphasis only via color/weight */
+  /* no underline or glow - keep emphasis only via color/weight */
   text-decoration: none;
   text-shadow: none;
   font-size: 1.06em;

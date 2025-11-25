@@ -16,6 +16,7 @@
     "prebuild": "node scripts/update-sitemap.js",
     "build": "react-scripts build",
     "convert-images": "node scripts/convert-images.js",
+    "generate-og": "node scripts/generate-og.js",
     "postbuild": "node scripts/postbuild.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

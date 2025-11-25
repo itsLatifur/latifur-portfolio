@@ -200,16 +200,16 @@ const Scheduler = ({ toggleMode, mode, spread, setDisableScroll }) => {
           }}
         >
           Atmosphere TV delivers streaming content to thousands of venues across
-          the country—but despite a robust content library, many business owners
-          were seeing the same few clips on repeat. This case study details how
-          I led a UX initiative to uncover the root of this content fatigue, and
-          designed a scalable scheduling solution that increased content
-          discovery, improved engagement, and balanced the needs of both small
-          businesses and enterprise users.
+          the country - but despite a robust content library, many business
+          owners were seeing the same few clips on repeat. This case study
+          details how I led a UX initiative to uncover the root of this content
+          fatigue, and designed a scalable scheduling solution that increased
+          content discovery, improved engagement, and balanced the needs of both
+          small businesses and enterprise users.
           <br /> <br /> Through user interviews, prototyping, and real-world
           testing, we reimagined how content is selected, scheduled, and
-          controlled—transforming the way businesses use Atmosphere to entertain
-          their customers.
+          controlled - transforming the way businesses use Atmosphere to
+          entertain their customers.
           <br /> <br /> Note: Some details have been modified or generalized to
           respect company confidentiality.
         </Paragraph>
@@ -317,8 +317,8 @@ const Scheduler = ({ toggleMode, mode, spread, setDisableScroll }) => {
           <br />
           The prototype introduced a popup onboarding flow with two paths: one
           allowed users to build their own schedule by entering content goals
-          and selecting preferred content types—Atmosphere would then generate a
-          tailored schedule. The other offered pre-curated schedules based on
+          and selecting preferred content types - Atmosphere would then generate
+          a tailored schedule. The other offered pre-curated schedules based on
           the user's venue type.
           <br />
           <br />

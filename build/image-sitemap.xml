@@ -4,10 +4,22 @@
   <url>
     <loc>https://www.latifur.dev/</loc>
     <image:image>
-      <image:loc>https://www.latifur.dev/profile.png</image:loc>
+      <image:loc>https://www.latifur.dev/latifur-rahman-limon.webp</image:loc>
       <image:caption>Latifur Rahman Limon - Software Engineer, ASP.NET Core Developer, .NET Developer, React Developer, Full Stack Developer from Bangladesh, Dhaka, IUBAT, Prime Tech Solutions Ltd.</image:caption>
       <image:title>Latifur Rahman Limon - Software Engineer, ASP.NET Core Developer, .NET Developer, React Developer, Full Stack Developer, Bangladesh, Dhaka, IUBAT, Prime Tech Solutions Ltd.</image:title>
       <image:geo_location>Dhaka, Bangladesh</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by-nc-nd/4.0/</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.latifur.dev/og-image.jpg</image:loc>
+      <image:caption>OG social preview image for Latifur Rahman Limon portfolio</image:caption>
+      <image:title>Latifur Rahman Limon - Portfolio Preview</image:title>
+      <image:license>https://creativecommons.org/licenses/by-nc-nd/4.0/</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.latifur.dev/meta.png</image:loc>
+      <image:caption>Thumbnail preview for Latifur Rahman Limon portfolio</image:caption>
+      <image:title>Portfolio Meta Image</image:title>
       <image:license>https://creativecommons.org/licenses/by-nc-nd/4.0/</image:license>
     </image:image>
   </url>

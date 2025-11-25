@@ -10,22 +10,6 @@ import styled from "styled-components";
 import { Nav, Foot, Lock } from "../components";
 import { Spread } from "../components/switch/styles";
 import {
-  Change1,
-  Hifi,
-  Lofi,
-  Person1,
-  Person2,
-  JourneyMap,
-  Sketch1,
-  Sketch2,
-  Sketch3,
-  Sketch4,
-  UserFlow,
-  Research1,
-  Research2,
-  Synth,
-  Change3,
-  Change2,
   Vuln,
   Vulnpersona1,
   Vulnpersona2,

@@ -183,7 +183,7 @@ const MarketingSite = ({ toggleMode, mode, spread }) => {
             opacity: 0.8,
           }}
         >
-          Atmosphere TV’s signup flow was underperforming—not because of
+          Atmosphere TV’s signup flow was underperforming - not because of
           friction, but because users didn’t understand what they were signing
           up for. As a hybrid product (a physical device + streaming service),
           it didn’t fit cleanly into existing mental models. Instead of
@@ -236,7 +236,7 @@ const MarketingSite = ({ toggleMode, mode, spread }) => {
         </DarkerParagraph>
         <DarkerParagraph style={{ marginBottom: 24 }}>
           As the UX lead, I needed to rethink how we presented this unique
-          product—one that didn’t align with common mental models—and build a
+          product - one that didn’t align with common mental models - and build a
           flow that matched how users actually evaluate purchases.
         </DarkerParagraph>
       </Midi>
@@ -353,7 +353,7 @@ const MarketingSite = ({ toggleMode, mode, spread }) => {
           }}
         >
           Specifically, I proposed inserting a product details page between the
-          landing page and signup form—giving users the information they needed
+          landing page and signup form - giving users the information they needed
           before asking for commitment. This was risky because conventional
           wisdom suggests minimizing steps in a conversion funnel. But I
           believed our problem wasn't funnel length; it was insufficient
@@ -579,7 +579,7 @@ const MarketingSite = ({ toggleMode, mode, spread }) => {
           <br />
           Despite adding an additional step to the funnel, I was confident that
           giving users the right information at the right time would increase
-          overall conversion—even if it meant more clicks.
+          overall conversion - if it meant more clicks.
           <br />
           <br />I told the team that if our hypothesis is right, we'll see fewer
           drop-offs, less back-and-forth navigation, and ultimately more signups

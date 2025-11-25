@@ -353,7 +353,10 @@ const AboutGrid = styled(HeroGrid)`
     gap: 48px;
     margin-top: 48px;
   }
-  @media (${QUERIES.large}) {
+  /* Use a lower breakpoint so devices wider than 695px show side-by-side */
+  @media (min-width: 696px) {
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
     margin-top: 0;
   }
 `;
@@ -454,8 +457,8 @@ const AboutText = styled(HeroText)`
   color: ${({ theme }) => theme.textMain};
   mix-blend-mode: normal;
 
-  @media (${QUERIES.large}) {
-    /* Desktop: text left as before */
+  @media (min-width: 696px) {
+    /* Desktop-like: text left */
     grid-row: 1;
     grid-column: 1 / 2;
   }
@@ -464,9 +467,14 @@ const AboutText = styled(HeroText)`
 const AboutImage = styled(HeroImage)`
   /* Mobile/Tablet: show image first */
   grid-row: 1;
+  /* Allow interaction for the about/profile image so users and crawlers can open it */
+  pointer-events: auto;
+  user-select: auto;
+  -webkit-user-drag: auto;
+  cursor: default;
 
-  @media (${QUERIES.large}) {
-    /* Desktop: image right as before */
+  @media (min-width: 696px) {
+    /* Desktop-like: image right */
     grid-row: 1;
     grid-column: 2 / 3;
     justify-self: end;
@@ -1265,7 +1273,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       const prevTitle = document.title;
       const meta = document.querySelector('meta[name="description"]');
       const prevDesc = meta ? meta.getAttribute("content") : undefined;
-      document.title = "Projects — Latifur Rahman Limon";
+      document.title = "Projects - Latifur Rahman Limon";
       const projectsDesc =
         "Selected projects by Latifur Rahman: Content Variety & Scheduling, Redesigning B2B Signup, and more.";
       if (meta) meta.setAttribute("content", projectsDesc);
@@ -1290,7 +1298,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       const prevTitle = document.title;
       const meta = document.querySelector('meta[name="description"]');
       const prevDesc = meta ? meta.getAttribute("content") : undefined;
-      document.title = "Work Experience — Latifur Rahman Limon";
+      document.title = "Work Experience - Latifur Rahman Limon";
       const experienceDesc =
         "Professional experience of Latifur Rahman Limon: Software Engineer Intern at Prime Tech Solutions Ltd., .NET-based development.";
       if (meta) meta.setAttribute("content", experienceDesc);
@@ -1925,7 +1933,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                                     />
                                   ) : null}
                                   <span className="pill">
-                                    Preview —{" "}
+                                    Preview -{" "}
                                     {personalData.education.institution}
                                   </span>
                                 </PreviewHeader>
@@ -1965,8 +1973,8 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
             {personalData.showProfileImage && (
               <AboutImage
                 src={personalData.profileImage}
-                alt="Latifur Rahman Limon - Software Engineer, ASP.NET Core Developer, .NET Developer, React Developer, Full Stack Developer, Bangladesh, Dhaka, IUBAT, Prime Tech Solutions Ltd., C#, Entity Framework, SQL Server, REST API, portfolio, web developer, full stack developer, frontend developer, backend developer, Data Scientist, Latifur Rahman Limon profile photo, Latifur Rahman Limon portrait, Latifur Rahman Limon image, Latifur Rahman Limon picture, Latifur Rahman Limon software engineer photo, Latifur Rahman Limon .NET developer photo, Latifur Rahman Limon Bangladesh developer photo, Latifur Rahman Limon Dhaka software engineer photo, Latifur Rahman Limon IUBAT, Latifur Rahman Limon Prime Tech Solutions Ltd."
-                title="Latifur Rahman Limon - Software Engineer, ASP.NET Core Developer,Bangladesh, Dhaka, IUBAT, Prime Tech Solutions Ltd., .NET Developer, React Developer, Full Stack Developer"
+                alt="Profile photo - Latifur Rahman Limon, Software Engineer (Dhaka, Bangladesh)"
+                title="Latifur Rahman Limon - Software Engineer (Dhaka, Bangladesh)"
                 itemProp="image"
                 loading="eager"
                 fetchpriority="high"

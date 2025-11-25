@@ -56,7 +56,7 @@ export const personalData = {
   location: "Dhaka, Bangladesh",
 
   showProfileImage: true, // can be toggled to show(true)/hide(false) profile image
-  profileImage: "/profile.png",
+  profileImage: "/latifur-rahman-limon.webp",
   // Navbar logo (public path like "/my-logo.svg" or imported asset). Leave empty to use default SVG mark.
   navLogo: "/favicon.png",
   linkedIn: "https://www.linkedin.com/in/latifur/",
@@ -123,7 +123,7 @@ export const personalData = {
       status: "Ongoing",
       year: "2025",
       institution:
-        "IUBAT — International University of Business Agriculture and Technology",
+        "IUBAT - International University of Business Agriculture and Technology",
       // Optional link to paper/preprint or repo when available
       url: "",
       order: 1,
