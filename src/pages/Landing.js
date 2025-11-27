@@ -1917,6 +1917,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                               <HoverPreview
                                 aria-label="Website preview"
                                 id="preview-iubat"
+                                data-nosnippet
                               >
                                 <PreviewHeader>
                                   {personalData.education &&
