@@ -5,5 +5,4 @@ Allow: /
 Sitemap: https://www.latifur.dev/sitemap.xml
 Sitemap: https://www.latifur.dev/image-sitemap.xml
 
-
 # Algolia-Crawler-Verif: 378C1F23DE2B985E
