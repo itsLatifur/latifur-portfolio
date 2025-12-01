@@ -2,7 +2,7 @@ export const personalData = {
   // Basic personal info
   name: "Latifur Rahman Limon",
   role: ["Software Engineer"],
-  oneLiner: "Building Nilamee (auction marketplace) using .NET",
+  oneLiner: "Building Nilamee (auction marketplace) using React & .NET",
   // Product or project name to highlight on small screens (editable)
   projectName: "Nilamee",
 
@@ -22,14 +22,14 @@ export const personalData = {
       before: "",
       highlightA: "Nilamee",
       middle: "(auction marketplace) using",
-      highlightB: "EF Core",
+      highlightB: "React.js",
     },
-    {
-      before: "",
-      highlightA: "Nilamee",
-      middle: "(auction marketplace) using",
-      highlightB: "MVC Pattern",
-    },
+    //{
+    //  before: "",
+    //  highlightA: "Nilamee",
+    //  middle: "(auction marketplace) using",
+    //  highlightB: "SQL",
+    //},
     // ,
     // {
     //   before: "the",
