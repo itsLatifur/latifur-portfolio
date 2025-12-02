@@ -1904,56 +1904,13 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                           <>
                             {" "}
                             at{" "}
-                            <HoverWrapper>
-                              <a
-                                href={personalData.education.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                tabIndex={0}
-                                aria-controls="preview-iubat"
-                              >
-                                {personalData.education.institution}
-                              </a>
-                              <HoverPreview
-                                aria-label="Website preview"
-                                id="preview-iubat"
-                                data-nosnippet
-                              >
-                                <PreviewHeader>
-                                  {personalData.education &&
-                                  personalData.education.url ? (
-                                    <img
-                                      src={`https://www.google.com/s2/favicons?domain=${new URL(personalData.education.url).hostname}`}
-                                      alt=""
-                                      style={{
-                                        width: 18,
-                                        height: 18,
-                                        marginRight: 8,
-                                        borderRadius: 4,
-                                      }}
-                                    />
-                                  ) : null}
-                                  <span className="pill">
-                                    Preview -{" "}
-                                    {personalData.education.institution}
-                                  </span>
-                                </PreviewHeader>
-                                <iframe
-                                  src={personalData.education.url}
-                                  title={
-                                    personalData.education.institution +
-                                    " website preview"
-                                  }
-                                  style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    border: 0,
-                                  }}
-                                  loading="lazy"
-                                  tabIndex={-1}
-                                />
-                              </HoverPreview>
-                            </HoverWrapper>
+                            <a
+                              href={personalData.education.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {personalData.education.institution}
+                            </a>
                           </>
                         ) : null}
                       </>
