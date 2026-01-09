@@ -137,7 +137,7 @@ export const experiencesData = [
     role: "Software Engineer Intern",
     company: "Prime Tech Solutions Ltd.",
     companyUrl: "https://primetechbd.com/",
-    location: "T.K. Bhaban, Kawran Bazar",
+    location: "T.K. Bhaban, Karwan Bazar",
     locationMapUrl: "https://maps.app.goo.gl/d1QCx5UNbAnQNa4S6",
     workMode: "On-site",
     employmentType: "Internship",
