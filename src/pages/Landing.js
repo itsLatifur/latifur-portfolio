@@ -5,134 +5,42 @@ import QUERIES, {
   Main,
   Midi,
   Heading,
-  Full,
   Paragraph,
   Heading2,
   Heading3,
   LandingMidi,
-  ImageProj,
-  Caption,
 } from "../theming/styles";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as CodeIconSvg } from "../images/code.svg";
 import { ReactComponent as ExternalIconSvg } from "../images/external.svg";
 import { personalData, experiencesData } from "../data";
-import { CodeIcon as CodeSvg, ExternalIcon as ExternalSvg } from "../images";
-import { Nav, Foot, Project, ProjectVideo, Experience } from "../components";
+import { Nav, Foot, ProjectVideo, Experience } from "../components";
 import { ProjectSlider } from "../components/Project/projectSlider";
 import { Spread } from "../components/switch/styles";
 import projects from "../data/projects";
 import { pulseGlow } from "../theming/animate";
-
-// Hover card for education preview
-const HoverPreview = styled.div`
-  position: fixed;
-  right: 88px; /* nudge left slightly from the page edge (moved 12px) */
-  top: 50%;
-  transform: translateY(-50%) translateX(12px) scale(0.98); /* start slightly offset */
-  z-index: 2000;
-  background: ${({ theme }) =>
-    theme.previewBg ||
-    (theme.main === "#FFFFFF" ? "#fff" : theme.altWhite || "#111")};
-  border: 1px solid #ddd;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  width: 340px;
-  height: 620px;
-  max-height: 86vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: 0;
-  transition:
-    opacity 0.18s,
-    transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
-  /* Only show on desktop */
-  @media (max-width: 1024px) {
-    display: none !important;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-    transform: translateY(-50%);
-  }
-
-  /* Small pointer/arrow pointing left towards the link */
-  &::before {
-    content: "";
-    position: absolute;
-    left: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 12px solid
-      ${({ theme }) =>
-        theme.previewBg ||
-        (theme.main === "#FFFFFF"
-          ? "#fff"
-          : theme.altWhite || "#111")}; /* matches preview background */
-    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.08);
-  }
-
-  @media (max-width: 1024px) {
-    &::before {
-      display: none;
-    }
-  }
-`;
-
-const HoverWrapper = styled.span`
-  position: relative;
-  display: inline-block;
-  a {
-    transition:
-      box-shadow 180ms ease,
-      text-decoration-color 180ms ease;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    a {
-      transition: none;
-    }
-  }
-
-  &:hover ${HoverPreview}, &:focus-within ${HoverPreview} {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(-50%) translateX(0) scale(1);
-  }
-  &:hover a,
-  &:focus-within a {
-    text-decoration: underline;
-    box-shadow: 0 0 0 6px rgba(120, 160, 255, 0.06) inset;
-  }
-`;
-
-// Small header inside the preview to indicate source
-const PreviewHeader = styled.div`
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-  .pill {
-    background: ${({ theme }) =>
-      theme.previewPillBg || "rgba(255,255,255,0.96)"};
-    color: ${({ theme }) => theme.previewPillText || "#222"};
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 13px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-  }
-`;
+// Import real brand icons from react-icons (some icons don't exist, using .NET/similar)
+import {
+  SiPostman,
+  SiCplusplus,
+  SiNetlify,
+  SiDotnet,
+  SiMysql,
+  SiBootstrap,
+  SiGithub,
+  SiJavascript,
+  SiReact,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiMongodb,
+  SiPython,
+  SiPostgresql,
+  SiNodedotjs,
+  SiExpress,
+  SiDocker,
+} from "react-icons/si";
 
 const Card = styled(Midi)`
   /* On mobile, cards have no special styling */
@@ -691,32 +599,36 @@ const Skills = styled.ul`
   }
   &.below-hero-skills {
     /* Unified responsive grid for all screens */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    max-width: 100%;
+    
     @media (min-width: 600px) {
-      grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
       gap: 12px;
     }
     @media (min-width: 900px) {
-      grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
+      gap: 12px;
+      max-width: 600px;
     }
     @media (min-width: 1200px) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
-      gap: 14px;
-    }
-  }
+      gap: 16px;
+      max-width: 620px;
 `;
 
 const Chip = styled.li`
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 7px 10px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1;
+  width: max-content;
+  min-width: 120px;
+  max-width: 160px;
   border: 1px solid ${({ theme }) => theme.outline}99;
   color: ${({ theme }) => theme.textMain};
   background:
@@ -750,6 +662,8 @@ const Chip = styled.li`
   @media (min-width: 768px) {
     padding: 10px 16px;
     font-size: 14px;
+    gap: 8px;
+    min-width: 180px;
   }
 `;
 
@@ -762,6 +676,11 @@ const SkillsSection = styled(LandingMidi)`
   /* Match Card vertical spacing so the gap above and below looks equal */
   margin-top: 0; /* Mobile: hero already provides 48px bottom padding */
   margin-bottom: 0;
+
+  /* Center the skills section content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   /* Ensure the next Card (Projects) uses the same spacing below the skills */
   & + ${Card} {
@@ -797,181 +716,25 @@ const SkillIconWrap = styled.span`
   }
 `;
 
-const ReactIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    {...props}
-  >
-    <circle cx="12" cy="12" r="2" fill="currentColor" />
-    <ellipse cx="12" cy="12" rx="11" ry="4.5" transform="rotate(60 12 12)" />
-    <ellipse cx="12" cy="12" rx="11" ry="4.5" transform="rotate(-60 12 12)" />
-    <ellipse cx="12" cy="12" rx="11" ry="4.5" />
-  </svg>
-);
+const ReactIcon = (props) => <SiReact {...props} />;
 
-const JsIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <rect
-      x="3"
-      y="3"
-      width="18"
-      height="18"
-      rx="2"
-      fill="currentColor"
-      opacity="0.1"
-    />
-    <path
-      d="M11 7v8a3 3 0 1 1-6 0"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      fill="none"
-    />
-    <path
-      d="M13 15.5c.6.9 1.6 1.5 2.9 1.5 1.6 0 2.6-.8 2.6-2 0-1.1-.7-1.6-2.6-2-1.9-.3-3.5-1-3.5-3 0-1.9 1.7-3 3.7-3 1.5 0 2.7.5 3.5 1.4"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      fill="none"
-    />
-  </svg>
-);
+const JsIcon = (props) => <SiJavascript {...props} />;
 
-const BootstrapIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <rect x="3" y="3" width="18" height="18" rx="3" opacity="0.1" />
-    <path
-      d="M8 7h5.5a3 3 0 0 1 0 6H8z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      fill="none"
-    />
-    <path
-      d="M8 13h6a2.5 2.5 0 0 1 0 5H8z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      fill="none"
-    />
-  </svg>
-);
+const BootstrapIcon = (props) => <SiBootstrap {...props} />;
 
-const TailwindIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path
-      d="M3 12c2-4 4-6 7-6 3 0 4 2 6 2 2 0 3-1 5-3-2 4-4 6-7 6-3 0-4-2-6-2-2 0-3 1-5 3Z"
-      fill="currentColor"
-      opacity="0.25"
-    />
-    <path
-      d="M3 12c2-4 4-6 7-6 3 0 4 2 6 2 2 0 3-1 5-3-2 4-4 6-7 6-3 0-4-2-6-2-2 0-3 1-5 3Zm0 6c2-4 4-6 7-6 3 0 4 2 6 2 2 0 3-1 5-3-2 4-4 6-7 6-3 0-4-2-6-2-2 0-3 1-5 3Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+const TailwindIcon = (props) => <SiTailwindcss {...props} />;
 
-const MySqlIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    {...props}
-  >
-    <path d="M4 16c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-    <path d="M6 16c0-3.3 2.7-6 6-6s6 2.7 6 6" opacity="0.5" />
-    <path d="M8 16c0-2.2 1.8-4 4-4s4 1.8 4 4" opacity="0.3" />
-  </svg>
-);
+const MySqlIcon = (props) => <SiMysql {...props} />;
 
 // Additional common icons (placeholders but professional-looking, all currentColor)
-const HtmlIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M4 3h16l-2 18-6 2-6-2z" opacity="0.1" />
-    <path
-      d="M7 7h10l-.5 5H10.5l.2 2.5H16L15.7 17l-3.7 1.2L8 17l-.2-2H10l-.2-2.5H6.7z"
-      fill="currentColor"
-    />
-  </svg>
-);
-const CssIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M4 3h16l-2 18-6 2-6-2z" opacity="0.1" />
-    <path
-      d="M7 7h10l-.3 3H11l-.2 2h5.1L15.3 17l-3.3 1.1L8.7 17l.1-1.5h-2L7 13h2.9l.2-3H7z"
-      fill="currentColor"
-    />
-  </svg>
-);
-const NodeIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    {...props}
-  >
-    <path d="M12 2 3 7v10l9 5 9-5V7z" />
-    <path d="M8 12a4 4 0 0 0 8 0" />
-  </svg>
-);
-const ExpressIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.2"
-    {...props}
-  >
-    <path d="M5 15l4-6 4 6" />
-    <path d="M15 9v6" />
-  </svg>
-);
-const GitIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <circle cx="12" cy="4" r="2" />
-    <circle cx="6" cy="12" r="2" />
-    <circle cx="18" cy="12" r="2" />
-    <path
-      d="M12 6v4M12 10l-4 2m4-2l4 2"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      fill="none"
-    />
-  </svg>
-);
-const MongoIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2s6 6 6 12-6 8-6 8-6-2-6-8 6-12 6-12Z" opacity="0.2" />
-    <path d="M12 2s6 6 6 12-6 8-6 8-6-2-6-8 6-12 6-12Z" fill="currentColor" />
-  </svg>
-);
-const PythonIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.2"
-    {...props}
-  >
-    <rect x="4" y="5" width="10" height="7" rx="2" />
-    <rect x="10" y="12" width="10" height="7" rx="2" />
-    <circle cx="9" cy="8.5" r="0.8" fill="currentColor" />
-    <circle cx="15" cy="15.5" r="0.8" fill="currentColor" />
-  </svg>
-);
-const PostgresIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.3"
-    {...props}
-  >
-    <path d="M12 4c5 0 8 3 8 6 0 5-4 10-8 10S4 15 4 10c0-3 3-6 8-6Z" />
-    <path d="M9 10h6M8 13h8" />
-  </svg>
-);
+const HtmlIcon = (props) => <SiHtml5 {...props} />;
+const CssIcon = (props) => <SiCss3 {...props} />;
+const NodeIcon = (props) => <SiNodedotjs {...props} />;
+const ExpressIcon = (props) => <SiExpress {...props} />;
+const GitIcon = (props) => <SiGithub {...props} />;
+const MongoIcon = (props) => <SiMongodb {...props} />;
+const PythonIcon = (props) => <SiPython {...props} />;
+const PostgresIcon = (props) => <SiPostgresql {...props} />;
 
 // --- Additional icons for .NET-focused skills (currentColor, lightweight) ---
 const CSharpIcon = (props) => (
@@ -1054,19 +817,8 @@ const LinqIcon = (props) => (
 );
 
 const SqlServerIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.4"
-    {...props}
-  >
-    <ellipse cx="12" cy="6.5" rx="6.5" ry="2.5" />
-    <path d="M5.5 6.5v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5" />
-    <path
-      d="M5.5 12v5c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-5"
-      opacity="0.6"
-    />
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M2 3v18h20V3H2zm18 16H4V5h16v14zM6 7h12v2H6V7zm0 4h12v2H6v-2zm0 4h8v2H6v-2z" />
   </svg>
 );
 
@@ -1084,15 +836,8 @@ const WebApiIcon = (props) => (
 );
 
 const AzureIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.4"
-    {...props}
-  >
-    <path d="M4 18 12 4l3 6-7 8z" />
-    <path d="M14 10 20 18h-9" />
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M10.5 7.5L3 19.5h5.25l2.25-3.75L10.5 7.5zM13.5 4.5L6.75 18h4.5l9-13.5h-6.75z" />
   </svg>
 );
 
@@ -1109,25 +854,42 @@ const XunitIcon = (props) => (
   </svg>
 );
 
-const DockerIcon = (props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.4"
-    {...props}
-  >
-    <rect x="5" y="10" width="3" height="3" />
-    <rect x="9" y="10" width="3" height="3" />
-    <rect x="13" y="10" width="3" height="3" />
-    <rect x="9" y="6.5" width="3" height="3" />
-    <path d="M4 15.5h15c1.5 0 2.5-1 2.5-2 0-1-1-1.8-2.3-1.9" />
+const DockerIcon = (props) => <SiDocker {...props} />;
+
+// Using SiDotnet for ASP.NET MVC (closest available icon)
+const AspNetMvcIcon = (props) => <SiDotnet {...props} />;
+
+const PostmanIcon = (props) => <SiPostman {...props} />;
+
+// Visual Studio - simple placeholder (no Simple Icon available)
+const VisualStudioIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M17 2L7 3v18l10 1V2zm-2 14h-4v-2h4v2zm0-4h-4V8h4v4z" />
   </svg>
 );
+
+// VS Code - simple placeholder (no Simple Icon available)
+const VsCodeIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M21 3l-7 6v12l7 6V3zm-9 4L7 3 3 6l9 9-9 9 4 3 5-4 9-9-9-9z" />
+  </svg>
+);
+
+// Java - simple placeholder (no Simple Icon available)
+const JavaIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M8 19c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6H8v6zM18 4h-4V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1H6c-1.1 0-2 .9-2 2v1h16V6c0-1.1-.9-2-2-2z" />
+  </svg>
+);
+
+const CppIcon = (props) => <SiCplusplus {...props} />;
+
+const NetlifyIcon = (props) => <SiNetlify {...props} />;
+
 const SkillsHeading = styled(Heading2)`
   display: block;
   text-align: center;
-  margin: 0 0 16px 0;
+  margin: 0;
   color: ${({ theme }) => theme.textMain};
 `;
 
@@ -1300,7 +1062,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
       const prevDesc = meta ? meta.getAttribute("content") : undefined;
       document.title = "Work Experience - Latifur Rahman Limon";
       const experienceDesc =
-        "Professional experience of Latifur Rahman Limon: Software Engineer Intern at Prime Tech Solutions Ltd., .NET-based development.";
+        "Professional experience of Latifur Rahman Limon: Software Engineer Intern (Oct 2025 - Jan 2026) at Prime Tech Solutions Ltd., ASP.NET Core based development.";
       if (meta) meta.setAttribute("content", experienceDesc);
 
       return () => {
@@ -1398,11 +1160,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
     } catch (e) {
       // ignore when document isn't present
     }
-  }, [
-    personalData.oneLiner,
-    personalData.oneLinerPrefix,
-    personalData.oneLinerVariants,
-  ]);
+  }, []);
 
   return (
     <Main
@@ -1579,6 +1337,7 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                     { match: "csharp", Comp: CSharpIcon },
                     { match: ".net", Comp: DotNetIcon },
                     { match: "dotnet", Comp: DotNetIcon },
+                    { match: "asp.net mvc", Comp: AspNetMvcIcon },
                     { match: "asp.net", Comp: AspNetIcon },
                     { match: "aspnet", Comp: AspNetIcon },
                     { match: "asp.net core", Comp: AspNetIcon },
@@ -1588,14 +1347,23 @@ const Landing = ({ toggleMode, mode, spread, setDisableScroll }) => {
                     { match: "sql server", Comp: SqlServerIcon },
                     { match: "mssql", Comp: SqlServerIcon },
                     { match: "web api", Comp: WebApiIcon },
+                    { match: "postman", Comp: PostmanIcon },
+                    { match: "visual studio", Comp: VisualStudioIcon },
+                    { match: "vs code", Comp: VsCodeIcon },
+                    { match: "vscode", Comp: VsCodeIcon },
                     { match: "azure", Comp: AzureIcon },
                     { match: "xunit", Comp: XunitIcon },
                     { match: "docker", Comp: DockerIcon },
+                    { match: "netlify", Comp: NetlifyIcon },
                     { match: "react", Comp: ReactIcon },
                     { match: "javascript", Comp: JsIcon },
                     { match: "bootstrap", Comp: BootstrapIcon },
                     { match: "tailwind", Comp: TailwindIcon },
                     { match: "mysql", Comp: MySqlIcon },
+                    { match: "java", Comp: JavaIcon },
+                    { match: "c/c++", Comp: CppIcon },
+                    { match: "c++", Comp: CppIcon },
+                    { match: "cpp", Comp: CppIcon },
                     { match: "html", Comp: HtmlIcon },
                     { match: "css", Comp: CssIcon },
                     { match: "node", Comp: NodeIcon },

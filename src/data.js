@@ -77,28 +77,34 @@ export const personalData = {
   },
 
   // Skills & tooling chips (shown under the hero)
-  // Prioritized for current .NET-focused internship at Prime Tech Solutions Ltd.
+  // Prioritized for backend-focused .NET development
   // Keep labels short; order controls display priority
   skills: [
+    // Backend Languages & Core
     { label: "C#", order: 1 },
-    { label: ".NET", order: 2 },
-    // { label: "ASP.NET Core", order: 3 },
+    { label: "ASP.NET Core", order: 2 },
+    { label: "Web API", order: 3 },
     { label: "EF Core", order: 4 },
     { label: "LINQ", order: 5 },
+    // Database
     { label: "SQL Server", order: 6 },
-    { label: "Web API (REST)", order: 7 },
-    // { label: "Azure", order: 8 },
-    { label: "Git/GitHub", order: 9 },
-    // { label: "xUnit", order: 10 },
-    // { label: "Dependency Injection", order: 11 },
-    // { label: "Docker", order: 12 },
-
-    // Secondary/front‑end skills kept for breadth
-    { label: "JavaScript", order: 13 },
-    { label: "React", order: 14 },
-    { label: "HTML/CSS", order: 15 },
-    { label: "Bootstrap", order: 16 },
+    { label: "MySQL", order: 7 },
+    // Frontend Frameworks
+    // { label: "ASP.NET MVC", order: 8 },
+    { label: "Bootstrap", order: 9 },
+    // Tools & Version Control
+    { label: "Git/GitHub", order: 10 },
+    { label: "Postman", order: 11 },
+    // { label: "Visual Studio", order: 12 },
+    // { label: "VS Code", order: 13 },
+    // Secondary languages & frameworks
+    { label: "JavaScript", order: 14 },
+    { label: "React", order: 15 },
+    { label: "HTML & CSS", order: 16 },
     { label: "Tailwind CSS", order: 17 },
+    // { label: "Java", order: 18 },
+    // { label: "C/C++", order: 19 },
+    { label: "Netlify", order: 20 },
   ],
 
   // Certifications / Achievements (shown under About)
@@ -109,7 +115,6 @@ export const personalData = {
         "Department of CSE, Jagannath University • EDGE Project, Bangladesh Computer Council (ICT Division)",
       year: "2025",
       url: "https://training.edge.gov.bd/certificate-validation?certificate_no=EDGE-DSTS-106-2619-00006",
-      // Optional metadata for future UI
       credentialId: "EDGE-DSTS-106-2619-00006",
       order: 1,
     },
@@ -133,7 +138,7 @@ export const personalData = {
 
 export const experiencesData = [
   {
-    years: "Oct 2025 - present",
+    years: "Oct 2025 - Jan 2026",
     role: "Software Engineer Intern",
     company: "Prime Tech Solutions Ltd.",
     companyUrl: "https://primetechbd.com/",
@@ -141,7 +146,7 @@ export const experiencesData = [
     locationMapUrl: "https://maps.app.goo.gl/d1QCx5UNbAnQNa4S6",
     workMode: "On-site",
     employmentType: "Internship",
-    description: ".NET-based development.",
+    description: "ASP.NET Core development",
     logo: "/primetech.jpg", // add custom logo path if not auto-fetched
   },
 ];
